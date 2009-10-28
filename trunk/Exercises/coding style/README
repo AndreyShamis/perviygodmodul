@@ -1,0 +1,1 @@
+modprog1, 2009Writen by: Yosi Cohen, id:333444555, login: yosicoClass: Hadassah/HarediCollegeex8a.cc: A program that sends a spaceship to the moon.		 g++ -Wall ex8a.cc -o ex8aex8b.cc: A program that sorts a list of numbers.		 g++ -Wall ex8b.cc -o ex8aex8c.cc: A program that swaps the values of two int vars		 g++ -Wall ex8c.cc -o ex8a

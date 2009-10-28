@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>C:\Documents and Settings\Dani Zobin\My Documents\äãñä\semA\úøâåìéí\week3\a6 bad_nonconstant_switch.cc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Code::Blocks Exporter plugin" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.style1 { color: #A0A0A0; }
+.style2 { color: #A0A0A0; }
+.style3 { color: #8080FF; font-weight: bold; }
+.style15 { color: #8080FF; font-weight: bold; }
+.style17 { color: #008080; }
+.style18 { color: #800000; }
+.style4 { color: #F000F0; }
+.style5 { color: #0000A0; font-weight: bold; }
+.style16 { color: #00A000; font-weight: bold; }
+.style6 { color: #0000FF; }
+.style12 { color: #0000FF; }
+.style7 { color: #E0A000; }
+.style8 { color: #000000; }
+.style9 { color: #00A000; }
+.style10 { color: #FF0000; }
+.style34 { color: #FF0000; font-weight: bold; text-decoration: underline; }
+.style35 { color: #000000; background-color: #FF0000; }
+--></style></head>
+<body>
+<pre>
+<code><span style="font: 8pt Courier New;"><span class="style9">#include &lt;iostream&gt;
+
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cout</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cin</span><span class="style10">;
+
+</span><span class="style5">const int </span><span class="style11">FINISH </span><span class="style10">= -</span><span class="style4">1</span><span class="style10">;  </span><span class="style2">// Explain the use of const
+
+</span><span class="style5">int </span><span class="style11">main</span><span class="style10">()
+{
+	</span><span class="style5">int </span><span class="style11">num1</span><span class="style10">, </span><span class="style11">num2</span><span class="style10">, </span><span class="style11">num3</span><span class="style10">, </span><span class="style11">othernum</span><span class="style10">;
+
+	</span><span class="style11">cin </span><span class="style10">&gt;&gt; </span><span class="style11">num1 </span><span class="style10">&gt;&gt; </span><span class="style11">num2 </span><span class="style10">&gt;&gt; </span><span class="style11">num3 </span><span class="style10">&gt;&gt; </span><span class="style11">othernum</span><span class="style10">;
+
+	</span><span class="style2">//This *doesn't* work! Only constant cases!
+	</span><span class="style5">while</span><span class="style10">(</span><span class="style11">othernum </span><span class="style10">!= </span><span class="style11">FINISH</span><span class="style10">)
+	{	
+		</span><span class="style5">switch</span><span class="style10">(</span><span class="style11">othernum</span><span class="style10">)
+		{
+			</span><span class="style5">case </span><span class="style11">num1</span><span class="style10">: </span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Like first"</span><span class="style10">; </span><span class="style5">break</span><span class="style10">;
+			</span><span class="style5">case </span><span class="style11">num2</span><span class="style10">: </span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Like second"</span><span class="style10">; </span><span class="style5">break</span><span class="style10">;
+			</span><span class="style5">case </span><span class="style11">num3</span><span class="style10">: </span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Like third"</span><span class="style10">; </span><span class="style5">break</span><span class="style10">;
+			</span><span class="style5">default</span><span class="style10">: </span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Different"</span><span class="style10">;		
+		}	
+		</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style11">std</span><span class="style10">::</span><span class="style11">endl</span><span class="style10">;
+		</span><span class="style11">cin </span><span class="style10">&gt;&gt; </span><span class="style11">num1 </span><span class="style10">&gt;&gt; </span><span class="style11">num2 </span><span class="style10">&gt;&gt; </span><span class="style11">num3 </span><span class="style10">&gt;&gt; </span><span class="style11">othernum</span><span class="style10">;
+	}
+	
+	
+	</span><span class="style5">return </span><span class="style4">0</span><span class="style10">;
+}</span></span>
+</code></pre>
+</body>
+</html>
