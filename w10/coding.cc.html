@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>C:\Documents and Settings\Dani Zobin\My Documents\äãñä\semA\úøâåìéí äãñä\week10\coding.cc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Code::Blocks Exporter plugin" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.style1 { color: #A0A0A0; }
+.style2 { color: #A0A0A0; }
+.style3 { color: #8080FF; font-weight: bold; }
+.style15 { color: #8080FF; font-weight: bold; }
+.style17 { color: #008080; }
+.style18 { color: #800000; }
+.style4 { color: #F000F0; }
+.style5 { color: #0000A0; font-weight: bold; }
+.style16 { color: #00A000; font-weight: bold; }
+.style6 { color: #0000FF; }
+.style12 { color: #0000FF; }
+.style7 { color: #E0A000; }
+.style8 { color: #000000; }
+.style9 { color: #00A000; }
+.style10 { color: #FF0000; }
+.style34 { color: #FF0000; font-weight: bold; text-decoration: underline; }
+.style35 { color: #000000; background-color: #FF0000; }
+--></style></head>
+<body>
+<pre>
+<code><span style="font: 8pt Courier New;"><span class="style1">/*
+ * Simple text coding 
+ * =============================================================
+ * Writen by: Dani Zobin
+ *
+ * Simple text coding usign characters exchange table.
+ *
+ * input: 
+ * 	command line: 1. "encode"/"decode" 2. coding table
+ *  stdin: text to encode/decode.
+ * 
+ * Assumption: text doesn't have capital letters
+ *
+ * output: 
+ *  encoded / decoded text.
+ * 
+ *  Algortihm: simple replacement using the dictionary
+ */
+
+
+</span><span class="style2">//-------------- include section --------------
+
+</span><span class="style9">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdlib&gt; 							</span><span class="style2">// For dealing with strings
+//-------------- using section --------------
+
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cin</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cout</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">endl</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">setw</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cerr</span><span class="style10">;
+
+</span><span class="style2">//-------------- const and enum section --------------
+
+</span><span class="style5">const char </span><span class="style11">BREAK_CHARACTER </span><span class="style10">= </span><span class="style7">'$'</span><span class="style10">;
+</span><span class="style5">const int </span><span class="style11">BUFFER_SIZE </span><span class="style10">= </span><span class="style4">200</span><span class="style10">;
+</span><span class="style5">const int </span><span class="style11">DICTIONARY_SIZE </span><span class="style10">= </span><span class="style7">'z' </span><span class="style10">- </span><span class="style7">'a' </span><span class="style10">+ </span><span class="style4">1</span><span class="style10">; 	</span><span class="style2">// amount of small letters in english abc
+
+//-------------- Prototypes section --------------
+
+</span><span class="style5">void </span><span class="style11">validateArgv</span><span class="style10">(</span><span class="style5">int </span><span class="style11">argc</span><span class="style10">, </span><span class="style5">char</span><span class="style10">* </span><span class="style11">argv</span><span class="style10">[]);
+</span><span class="style5">void </span><span class="style11">readText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[]);
+</span><span class="style5">void </span><span class="style11">encodeText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[], </span><span class="style5">char </span><span class="style11">dictionary</span><span class="style10">[</span><span class="style11">DICTIONARY_SIZE</span><span class="style10">]);
+</span><span class="style5">void </span><span class="style11">decodeText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[], </span><span class="style5">char </span><span class="style11">dictionary</span><span class="style10">[</span><span class="style11">DICTIONARY_SIZE</span><span class="style10">]);
+</span><span class="style5">int </span><span class="style11">chIndex</span><span class="style10">(</span><span class="style5">char </span><span class="style11">ch</span><span class="style10">, </span><span class="style5">char </span><span class="style11">str</span><span class="style10">[]);
+
+</span><span class="style2">//--------------  main --------------
+
+</span><span class="style5">int </span><span class="style11">main</span><span class="style10">(</span><span class="style5">int </span><span class="style11">argc</span><span class="style10">, </span><span class="style5">char</span><span class="style10">* </span><span class="style11">argv</span><span class="style10">[])
+{
+	</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">BUFFER_SIZE</span><span class="style10">];		</span><span class="style2">// buffer for storing the text
+	
+	//input
+	</span><span class="style11">validateArgv</span><span class="style10">(</span><span class="style11">argc</span><span class="style10">, </span><span class="style11">argv</span><span class="style10">);			</span><span class="style2">// Legality check for the parameters
+	</span><span class="style11">readText</span><span class="style10">(</span><span class="style11">buffer</span><span class="style10">);
+	
+	</span><span class="style2">//coding	
+	</span><span class="style5">if</span><span class="style10">(</span><span class="style11">strcmp</span><span class="style10">(</span><span class="style11">argv</span><span class="style10">[</span><span class="style4">1</span><span class="style10">],</span><span class="style6">"encode"</span><span class="style10">)==</span><span class="style4">0</span><span class="style10">)
+		</span><span class="style11">encodeText</span><span class="style10">(</span><span class="style11">buffer</span><span class="style10">, </span><span class="style11">argv</span><span class="style10">[</span><span class="style4">2</span><span class="style10">]);
+	</span><span class="style5">else
+		</span><span class="style11">decodeText</span><span class="style10">(</span><span class="style11">buffer</span><span class="style10">, </span><span class="style11">argv</span><span class="style10">[</span><span class="style4">2</span><span class="style10">]);
+
+	</span><span class="style2">//output
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style11">buffer </span><span class="style10">&lt;&lt; </span><span class="style11">endl</span><span class="style10">;
+	
+	</span><span class="style5">return </span><span class="style11">EXIT_SUCCESS </span><span class="style10">;
+}
+</span><span class="style2">//------------------------------------------------------------------
+
+// checks that command line parameters are legal,
+// if no: prints error message with format directions 
+// and exits
+
+// parameters: argc, argv
+
+</span><span class="style5">void </span><span class="style11">validateArgv</span><span class="style10">(</span><span class="style5">int </span><span class="style11">argc</span><span class="style10">, </span><span class="style5">char</span><span class="style10">* </span><span class="style11">argv</span><span class="style10">[])
+{
+	</span><span class="style5">if</span><span class="style10">(	</span><span class="style11">argc</span><span class="style10">!=</span><span class="style4">3 </span><span class="style10">|| 							</span><span class="style2">// encoding/decoding + dictionary
+		</span><span class="style10">( </span><span class="style11">strcmp</span><span class="style10">(</span><span class="style11">argv</span><span class="style10">[</span><span class="style4">1</span><span class="style10">],</span><span class="style6">"encode"</span><span class="style10">)!=</span><span class="style4">0 </span><span class="style10">&amp;&amp; </span><span class="style11">strcmp</span><span class="style10">(</span><span class="style11">argv</span><span class="style10">[</span><span class="style4">1</span><span class="style10">],</span><span class="style6">"decode"</span><span class="style10">)!=</span><span class="style4">0 </span><span class="style10">) ||
+		( </span><span class="style11">strlen</span><span class="style10">(</span><span class="style11">argv</span><span class="style10">[</span><span class="style4">2</span><span class="style10">]) != </span><span class="style11">DICTIONARY_SIZE</span><span class="style10">)) 
+	{
+		</span><span class="style11">cerr 	</span><span class="style10">&lt;&lt; </span><span class="style6">"Wrong command format." </span><span class="style10">&lt;&lt; </span><span class="style11">endl 
+				</span><span class="style10">&lt;&lt; </span><span class="style6">"Format is: " </span><span class="style10">&lt;&lt; </span><span class="style11">argv</span><span class="style10">[</span><span class="style4">0</span><span class="style10">] &lt;&lt; </span><span class="style6">" [encode/decode] [dictionary]\n"</span><span class="style10">;
+		</span><span class="style11">exit</span><span class="style10">(</span><span class="style11">EXIT_FAILURE</span><span class="style10">);
+	}
+}
+</span><span class="style2">//------------------------------------------------------------------
+
+// Reads input
+// parameters: buffer
+
+</span><span class="style5">void </span><span class="style11">readText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[])
+{
+	</span><span class="style5">int </span><span class="style11">i</span><span class="style10">;							</span><span class="style2">// loop counter
+
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style11">i</span><span class="style10">=</span><span class="style4">0</span><span class="style10">; </span><span class="style11">i</span><span class="style10">&lt;</span><span class="style11">BUFFER_SIZE</span><span class="style10">; </span><span class="style11">i</span><span class="style10">++)
+	{
+		 </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] = </span><span class="style11">cin</span><span class="style10">.</span><span class="style11">get</span><span class="style10">();
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">]==</span><span class="style11">BREAK_CHARACTER</span><span class="style10">)
+		{
+			</span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] = </span><span class="style7">'\0'</span><span class="style10">;
+			</span><span class="style5">break</span><span class="style10">;
+		}
+	}
+}
+
+</span><span class="style2">//------------------------------------------------------------------
+
+// encodes text using a dictionary
+// parameters:
+//		buffer
+// 		dictionary
+
+</span><span class="style5">void </span><span class="style11">encodeText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[], </span><span class="style5">char </span><span class="style11">dictionary</span><span class="style10">[</span><span class="style11">DICTIONARY_SIZE</span><span class="style10">])
+{
+	</span><span class="style5">char </span><span class="style11">ch</span><span class="style10">;
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style5">int </span><span class="style11">i </span><span class="style10">=</span><span class="style4">0</span><span class="style10">;
+		</span><span class="style11">i </span><span class="style10">&lt; </span><span class="style11">BUFFER_SIZE </span><span class="style10">&amp;&amp; </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] != </span><span class="style4">0</span><span class="style10">; 
+		</span><span class="style11">i</span><span class="style10">++)
+	{
+		</span><span class="style11">ch </span><span class="style10">= </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">];
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">ch </span><span class="style10">&gt;= </span><span class="style7">'a' </span><span class="style10">&amp;&amp; </span><span class="style11">ch </span><span class="style10">&lt;= </span><span class="style7">'z'</span><span class="style10">)				</span><span class="style2">// Apply for small letters only
+			</span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] = </span><span class="style11">dictionary</span><span class="style10">[</span><span class="style11">ch</span><span class="style10">-</span><span class="style7">'a'</span><span class="style10">];
+	}	
+}
+
+</span><span class="style2">//------------------------------------------------------------------
+
+// decodes text using a dictionary
+// parameters:
+//		buffer
+// 		dictionary
+
+</span><span class="style5">void </span><span class="style11">decodeText</span><span class="style10">(</span><span class="style5">char </span><span class="style11">buffer</span><span class="style10">[], </span><span class="style5">char </span><span class="style11">dictionary</span><span class="style10">[</span><span class="style11">DICTIONARY_SIZE</span><span class="style10">])
+{
+	</span><span class="style5">char </span><span class="style11">ch</span><span class="style10">;
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style5">int </span><span class="style11">i </span><span class="style10">=</span><span class="style4">0</span><span class="style10">;
+		</span><span class="style11">i </span><span class="style10">&lt; </span><span class="style11">BUFFER_SIZE </span><span class="style10">&amp;&amp; </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] != </span><span class="style4">0</span><span class="style10">; 
+		</span><span class="style11">i</span><span class="style10">++)
+	{
+		</span><span class="style11">ch </span><span class="style10">= </span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">];
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">ch </span><span class="style10">&gt;= </span><span class="style7">'a' </span><span class="style10">&amp;&amp; </span><span class="style11">ch </span><span class="style10">&lt;= </span><span class="style7">'z'</span><span class="style10">)				</span><span class="style2">// Apply for small letters only
+			</span><span class="style11">buffer</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] = </span><span class="style7">'a' </span><span class="style10">+ </span><span class="style11">chIndex</span><span class="style10">(</span><span class="style11">ch</span><span class="style10">, </span><span class="style11">dictionary</span><span class="style10">);
+	}	
+}
+</span><span class="style2">//------------------------------------------------------------------
+
+// Finds a character in a string
+// PArameters:
+// ch - character to find
+// str - string to find in
+// Returns:
+// found ch index in the string, or -1 if not found
+
+</span><span class="style5">int </span><span class="style11">chIndex</span><span class="style10">(</span><span class="style5">char </span><span class="style11">ch</span><span class="style10">, </span><span class="style5">char </span><span class="style11">str</span><span class="style10">[])
+{
+	</span><span class="style5">int </span><span class="style11">i</span><span class="style10">;
+	
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style11">i</span><span class="style10">=</span><span class="style4">0</span><span class="style10">; </span><span class="style11">str</span><span class="style10">[</span><span class="style11">i</span><span class="style10">]!= </span><span class="style7">'\0'</span><span class="style10">; </span><span class="style11">i</span><span class="style10">++)
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">str</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] == </span><span class="style11">ch</span><span class="style10">)
+			</span><span class="style5">break</span><span class="style10">;
+	
+	</span><span class="style5">return </span><span class="style11">str</span><span class="style10">[</span><span class="style11">i</span><span class="style10">]!=</span><span class="style4">0 </span><span class="style10">? </span><span class="style11">i </span><span class="style10">: -</span><span class="style4">1</span><span class="style10">;
+}
+</span><span class="style2">//------------------------------------------------------------------
+//------------------------------------------------------------------
+//------------------------------------------------------------------
+//------------------------------------------------------------------</span></span>
+</code></pre>
+</body>
+</html>

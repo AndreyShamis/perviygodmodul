@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>C:\Documents and Settings\Dani Zobin\My Documents\äãñä\semA\úøâåìéí äãñä\week13\devideGoldMetals.cc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Code::Blocks Exporter plugin" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.style1 { color: #A0A0A0; }
+.style2 { color: #A0A0A0; }
+.style3 { color: #8080FF; font-weight: bold; }
+.style15 { color: #8080FF; font-weight: bold; }
+.style17 { color: #008080; }
+.style18 { color: #800000; }
+.style4 { color: #F000F0; }
+.style5 { color: #0000A0; font-weight: bold; }
+.style16 { color: #00A000; font-weight: bold; }
+.style6 { color: #0000FF; }
+.style12 { color: #0000FF; }
+.style7 { color: #E0A000; }
+.style8 { color: #000000; }
+.style9 { color: #00A000; }
+.style10 { color: #FF0000; }
+.style34 { color: #FF0000; font-weight: bold; text-decoration: underline; }
+.style35 { color: #000000; background-color: #FF0000; }
+--></style></head>
+<body>
+<pre>
+<code><span style="font: 8pt Courier New;"><span class="style1">/*
+ * DEvide Gold metals
+ * =============================================================
+ * Writen by: Dani Zobin
+ *
+ * input:
+ *  List of metal values
+ *
+ * output:
+ * 	All assignments of metals to 2 goldsmithes when the overall welth of them
+ *  are equal.
+ *
+ * Algortihm:
+ *  Assign current metal to goldsmith1 then assign it to golsmith 2.
+ */
+
+
+</span><span class="style2">//-------------- include section --------------
+
+</span><span class="style9">#include &lt;iostream&gt;
+
+</span><span class="style2">//-------------- using section --------------
+
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cin</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cout</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">endl</span><span class="style10">;
+</span><span class="style5">using </span><span class="style11">std</span><span class="style10">::</span><span class="style11">cerr</span><span class="style10">;
+
+</span><span class="style2">//-------------- const and enum section --------------
+</span><span class="style5">const int </span><span class="style11">METALS_NUM </span><span class="style10">= </span><span class="style4">6</span><span class="style10">;
+
+</span><span class="style5">enum </span><span class="style11">MetalOwners </span><span class="style10">{</span><span class="style11">GOLDSMITH1</span><span class="style10">, </span><span class="style11">GOLDSMITH2</span><span class="style10">};
+
+</span><span class="style2">//-------------- Prototypes section --------------
+
+</span><span class="style5">void </span><span class="style11">printEqualAssignments</span><span class="style10">(	</span><span class="style5">const int </span><span class="style11">metals</span><span class="style10">[],
+							</span><span class="style11">MetalOwners metalsAssignment</span><span class="style10">[],
+							</span><span class="style5">int </span><span class="style11">index</span><span class="style10">, </span><span class="style5">int </span><span class="style11">sum1</span><span class="style10">, </span><span class="style5">int </span><span class="style11">sum2</span><span class="style10">);
+</span><span class="style5">void </span><span class="style11">printAsignment</span><span class="style10">(</span><span class="style5">const int </span><span class="style11">metals</span><span class="style10">[], </span><span class="style11">MetalOwners metalsAssignment</span><span class="style10">[]);
+
+</span><span class="style2">//--------------  main --------------
+
+</span><span class="style5">int </span><span class="style11">main</span><span class="style10">()
+
+{
+	</span><span class="style5">int </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">METALS_NUM</span><span class="style10">];						</span><span class="style2">// Array of metal sizes
+
+	</span><span class="style11">MetalOwners metalsAssignment</span><span class="style10">[</span><span class="style11">METALS_NUM</span><span class="style10">];	</span><span class="style2">// For tracking the owners of
+												// each metal.
+
+	</span><span class="style5">int </span><span class="style11">i</span><span class="style10">;										</span><span class="style2">// Loop index
+
+	// Input
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Enter list of " </span><span class="style10">&lt;&lt; </span><span class="style11">METALS_NUM </span><span class="style10">&lt;&lt; </span><span class="style6">" metal sizes: "</span><span class="style10">;
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style11">i</span><span class="style10">=</span><span class="style4">0</span><span class="style10">; </span><span class="style11">i</span><span class="style10">&lt;</span><span class="style11">METALS_NUM</span><span class="style10">; </span><span class="style11">i</span><span class="style10">++)
+		</span><span class="style11">cin </span><span class="style10">&gt;&gt; </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">i</span><span class="style10">];
+
+	</span><span class="style11">printEqualAssignments</span><span class="style10">(</span><span class="style11">metals</span><span class="style10">, </span><span class="style11">metalsAssignment</span><span class="style10">, </span><span class="style4">0</span><span class="style10">, </span><span class="style4">0</span><span class="style10">, </span><span class="style4">0</span><span class="style10">);
+
+	</span><span class="style5">return </span><span class="style11">EXIT_SUCCESS </span><span class="style10">;
+}
+
+</span><span class="style2">//------------------------------------------------------------------
+
+// Prints all the possible assignments of metals to 2 golsmithes
+// when the overall value of metals that each golsmith owns are equal.
+// Parameters:
+//		metals: lists of metal values
+//		metalsAssignment: list of assignments made before "index"
+// 		index: index of the current metal to assign
+//		sum1, sum2: sums of the metals that each Golsmith own *until now*
+</span><span class="style5">void </span><span class="style11">printEqualAssignments</span><span class="style10">(	</span><span class="style5">const int </span><span class="style11">metals</span><span class="style10">[],
+							</span><span class="style11">MetalOwners metalsAssignment</span><span class="style10">[],
+							</span><span class="style5">int </span><span class="style11">index</span><span class="style10">, </span><span class="style5">int </span><span class="style11">sum1</span><span class="style10">, </span><span class="style5">int </span><span class="style11">sum2</span><span class="style10">)
+{
+	</span><span class="style2">// Assignment finished
+	</span><span class="style5">if</span><span class="style10">(</span><span class="style11">index </span><span class="style10">== </span><span class="style11">METALS_NUM</span><span class="style10">)
+	{
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">sum1 </span><span class="style10">== </span><span class="style11">sum2</span><span class="style10">)
+			</span><span class="style11">printAsignment</span><span class="style10">(</span><span class="style11">metals</span><span class="style10">, </span><span class="style11">metalsAssignment</span><span class="style10">);
+		</span><span class="style5">return</span><span class="style10">;
+	}
+
+	</span><span class="style2">// assign current metal to golsmith1
+	</span><span class="style11">metalsAssignment</span><span class="style10">[</span><span class="style11">index</span><span class="style10">] = </span><span class="style11">GOLDSMITH1</span><span class="style10">;
+	</span><span class="style11">printEqualAssignments</span><span class="style10">(	</span><span class="style11">metals</span><span class="style10">, </span><span class="style11">metalsAssignment</span><span class="style10">,
+							</span><span class="style11">index</span><span class="style10">+</span><span class="style4">1</span><span class="style10">,
+							</span><span class="style11">sum1 </span><span class="style10">+ </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">index</span><span class="style10">],
+							</span><span class="style11">sum2</span><span class="style10">);
+
+	</span><span class="style2">// assign current metal to golsmith2
+	</span><span class="style11">metalsAssignment</span><span class="style10">[</span><span class="style11">index</span><span class="style10">] = </span><span class="style11">GOLDSMITH2</span><span class="style10">;
+	</span><span class="style11">printEqualAssignments</span><span class="style10">(	</span><span class="style11">metals</span><span class="style10">, </span><span class="style11">metalsAssignment</span><span class="style10">,
+							</span><span class="style11">index</span><span class="style10">+</span><span class="style4">1</span><span class="style10">,
+							</span><span class="style11">sum1</span><span class="style10">,
+							</span><span class="style11">sum2 </span><span class="style10">+ </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">index</span><span class="style10">]);
+}
+
+</span><span class="style2">// Prints a configuration of metals assignments to Golsmithes
+// Parameters:
+//	metals: 			list of metal sizes
+//  metalsAssignment: 	list of assignments
+</span><span class="style5">void </span><span class="style11">printAsignment</span><span class="style10">(</span><span class="style5">const int </span><span class="style11">metals</span><span class="style10">[], </span><span class="style11">MetalOwners metalsAssignment</span><span class="style10">[])
+{
+	</span><span class="style5">int </span><span class="style11">i</span><span class="style10">; 								</span><span class="style2">// loop index
+	//print goldsmith1 metals
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Goldsmith1: "</span><span class="style10">;
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style11">i</span><span class="style10">=</span><span class="style4">0</span><span class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span class="style11">METALS_NUM</span><span class="style10">; </span><span class="style11">i</span><span class="style10">++)
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">metalsAssignment</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] == </span><span class="style11">GOLDSMITH1</span><span class="style10">)
+			</span><span class="style11">cout </span><span class="style1">/* &lt;&lt; i &lt;&lt; ": " */ </span><span class="style10">&lt;&lt; </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] &lt;&lt; </span><span class="style6">", "</span><span class="style10">;
+
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style11">endl</span><span class="style10">;
+	</span><span class="style2">//print goldsmith2 metals
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style6">"Goldsmith2: "</span><span class="style10">;
+	</span><span class="style5">for</span><span class="style10">(</span><span class="style11">i</span><span class="style10">=</span><span class="style4">0</span><span class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span class="style11">METALS_NUM</span><span class="style10">; </span><span class="style11">i</span><span class="style10">++)
+		</span><span class="style5">if</span><span class="style10">(</span><span class="style11">metalsAssignment</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] == </span><span class="style11">GOLDSMITH2</span><span class="style10">)
+			</span><span class="style11">cout </span><span class="style1">/* &lt;&lt; i &lt;&lt; ": " */ </span><span class="style10">&lt;&lt; </span><span class="style11">metals</span><span class="style10">[</span><span class="style11">i</span><span class="style10">] &lt;&lt; </span><span class="style6">", "</span><span class="style10">;
+
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style11">endl</span><span class="style10">;
+	</span><span class="style11">cout </span><span class="style10">&lt;&lt; </span><span class="style11">endl</span><span class="style10">;
+
+}
+
+</span><span class="style2">//------------------------------------------------------------------
+//------------------------------------------------------------------
+//------------------------------------------------------------------
+//------------------------------------------------------------------
+//------------------------------------------------------------------</span></span>
+</code></pre>
+</body>
+</html>
