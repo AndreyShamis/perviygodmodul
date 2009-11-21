@@ -1,8 +1,9 @@
 /*
- * EX2A    :: Replacement of variable values
+ * EX2A    :: Program issuing the name of the day of this era
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
- *
+ *  The program takes three parameters,
+ *  the day of the month and year and displays the name of the day.
  */
 
 //--------------- including section -------------

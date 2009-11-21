@@ -1,8 +1,10 @@
 /*
- * EX2C    :: Replacement of variable values
+ * EX2C    :: Transformation of input dates in a calendar format
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
- *
+ *  With the input date and the two parameters,
+ *  which amounts to six types of the format
+ *  of a calendar date, we obtain the result.
  */
 
 //--------------- including section -------------
@@ -18,10 +20,9 @@ int main()
 {
 
     int day, month, year,   // Variables day month year
-        foramatMonDay,//Variable is pointing to a European or American format
-        formatLongShort;//Variable indicating the average long and short format
-
-    int monLen;
+        foramatMonDay,  //pointing to a 1=European or 2=American format
+        formatLongShort,//indicating the average 1=long 2=medium 3=short format
+        monLen; //
 
     cin >> day >> month >> year;
 

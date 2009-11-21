@@ -1,8 +1,9 @@
 /*
- * EX2B    :: Replacement of variable values
+ * EX2B    :: Program to find the time difference between the two time variables
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
- *
+ *  To find the difference, are given by two variables,
+ *  after calculating the numerical data are converted into time format
  */
 
 //--------------- including section -------------

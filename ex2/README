@@ -1,0 +1,18 @@
+﻿modprog 2009
+Writen by: Andrey Shamis
+id: 321470882
+login:andreysh
+
+ * EX2A:: Program issuing the name of the day of this era
+The program takes three parameters, 
+the day of the month and year and 
+displays the name of the day.
+
+ * EX2B:: Program to find the time difference between the two time variables
+To find the difference, are given by two variables, 
+after calculating the numerical data are converted into time format
+
+ * EX2C:: Transformation of input dates in a calendar format
+With the input date and the two parameters, 
+which amounts to six types of the format of a 
+calendar date, we obtain the result.
