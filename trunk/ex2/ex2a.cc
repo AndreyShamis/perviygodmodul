@@ -17,7 +17,7 @@ using std::endl;
 //--------------- main                 -------------
 int main()
 {
-    int        day,            // Day variable
+    int     day,            // Day variable
             month,          // Month variable
             year,           // Year variable
             monthCode,      // Specific month code variable

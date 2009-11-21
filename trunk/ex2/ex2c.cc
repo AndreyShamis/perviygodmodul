@@ -18,14 +18,12 @@ using std::endl;
 //--------------- main                 -------------
 int main()
 {
-
     int day, month, year,   // Variables day month year
         foramatMonDay,  //pointing to a 1=European or 2=American format
         formatLongShort,//indicating the average 1=long 2=medium 3=short format
         monLen; //
 
     cin >> day >> month >> year;
-
 
     switch(month)
     {
@@ -39,7 +37,6 @@ int main()
         default:monLen = 31;
 
     }
-
 
     if(day<1 || day>31 || month <1 || month>12
         || year<0 || year >99 && year < 1950 || year > 2049
@@ -55,8 +52,6 @@ int main()
         year = 1900 + year;
     else if(year<50)
         year = 2000 + year;
-
-    //cout << year << endl;
 
     if(formatLongShort == 1)
     {
