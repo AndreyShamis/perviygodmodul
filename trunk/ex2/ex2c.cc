@@ -87,7 +87,7 @@ int main()
             cout << day;
         }
 
-        cout << "/" << year;
+        cout << "/";
     }
     else if(formatLongShort == 3)
     {
@@ -131,10 +131,11 @@ int main()
                 cout << "0";
             cout  << day;
         }
-        cout << " " << year;
+        cout << " ";
     }
-
-    cout << endl;
+    if (year<10)
+        cout << "0";
+    cout << year << endl;
 
     return(0);
 }
