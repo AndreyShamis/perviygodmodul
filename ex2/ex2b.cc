@@ -19,9 +19,8 @@ using std::endl;
 int main()
 {
     int firstHour, secondHour,      // Program first and second hours
-        firstMinute, secondMinute;  // Program first and second minutes
-
-    int newHour,newMinute;      //////////.....
+        firstMinute, secondMinute,  // Program first and second minutes
+        newHour,newMinute;      //////////.....
 
     cin >> firstHour >> firstMinute >> secondHour >> secondMinute;
 
@@ -62,7 +61,6 @@ int main()
         cout << "0";
 
     cout    << newMinute << endl;
-
 
     return(0);
 }
