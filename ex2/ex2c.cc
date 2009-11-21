@@ -56,13 +56,7 @@ int main()
     else if(year<50)
         year = 2000 + year;
 
-
-
-
-
-
-
-    cout << year << endl;
+    //cout << year << endl;
 
     if(formatLongShort == 1)
     {
@@ -75,39 +69,72 @@ int main()
     if(formatLongShort != 3)
     {
         if(foramatMonDay == 1)
-            cout << day << "/" << month << "/" << year;
+        {
+            if(day<10)
+                cout << "0";
+            cout << day << "/";
+            if(month<10)
+                cout << "0";
+            cout << month;
+        }
         else
-            cout << month << "/" << day << "/" << year;
+        {
+            if(month<10)
+                cout << "0";
+            cout << month << "/";;
+            if(day<10)
+                cout << "0";
+            cout << day;
+        }
+
+        cout << "/" << year;
     }
     else if(formatLongShort == 3)
     {
+        if(foramatMonDay == 1)
+        {
+            if(day<10)
+                cout << "0";
+            cout << day << " ";
+        }
+
         switch(month){
-            case 1:     cout << "January";
+            case 1:     cout << "January ";
                         break;
-            case 2:     cout << "February";
+            case 2:     cout << "February ";
                         break;
-            case 3:     cout << "March";
+            case 3:     cout << "March ";
                         break;
-            case 4:     cout << "April";
+            case 4:     cout << "April ";
                         break;
-            case 5:     cout << "May";
+            case 5:     cout << "May ";
                         break;
-            case 6:     cout << "June";
+            case 6:     cout << "June ";
                         break;
-            case 7:     cout << "July";
+            case 7:     cout << "July ";
                         break;
-            case 8:     cout << "August";
+            case 8:     cout << "August ";
                         break;
-            case 9:     cout << "September";
+            case 9:     cout << "September ";
                         break;
-            case 10:    cout << "October";
+            case 10:    cout << "October ";
                         break;
-            case 11:    cout << "November";
+            case 11:    cout << "November ";
                         break;
-            case 12:    cout << "December";
+            case 12:    cout << "December ";
                         break;
         }
+
+        if(foramatMonDay == 2)
+        {
+            if(day<10)
+                cout << "0";
+            cout  << day;
+        }
+        cout << " " << year;
     }
+
+    cout << endl;
 
     return(0);
 }
