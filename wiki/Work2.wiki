@@ -1,8 +1,3 @@
-מכללה אקדמית הדסה
-החוג למדעי המחשב
-
-תרגיל 2# בקורס תכנות מודולרי א'
-תנאים
 
 תכנית 1# יום בשבוע בו חל תאריך (33%)
 •	Write a program that reads from the user a date belonging to the twentieth century in the following format: 
