@@ -4,6 +4,21 @@
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
  *  The program takes three parameters,
  *  the day of the month and year and displays the name of the day.
+ *
+ *	Input data:
+ *	        1 - day    between 1-31
+ *          2 - month  between 1-12
+ *          3 - year   between 0-99
+ *		Example:	29	11	87
+ *	Returnening data:
+ *		Correct data(was entered):
+ *			Description:The Name of the entered name
+ *						like Monday or Tuesday and etc.
+ *			Code:		return 0
+ *
+ *		Incorrect data:
+ *			Description:Error: illegal date.
+ *			Code:		return -1
  */
 
 //--------------- including section -------------
