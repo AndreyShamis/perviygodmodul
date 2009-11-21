@@ -1,18 +1,88 @@
-﻿modprog 2009
+﻿modprog 2010
 Writen by: Andrey Shamis
 id: 321470882
 login:andreysh
+Class: Hadassah/2010
 
  * EX2A:: Program issuing the name of the day of this era
 The program takes three parameters, 
 the day of the month and year and 
 displays the name of the day.
 
+		Compile:	g++ -Wall ex2a.cc -o ex2a
+Instruction to use:
+	Entered data:
+	        1 - day    between 1-31        
+            2 - month  between 1-12       
+            3 - year   between 0-99
+		Example:	29	11	87
+	Returnening data:
+		Correct data(was entered):
+			Description:The Name of the entered name 
+						like Monday or Tuesday and etc.
+			Code:		return 0
+			
+		Incorrect data:
+			Description:Error: illegal date.
+			Code:		return -1	
+
+	
+	
  * EX2B:: Program to find the time difference between the two time variables
 To find the difference, are given by two variables, 
 after calculating the numerical data are converted into time format
+
+		Compile:	g++ -Wall ex2b.cc -o ex2b
+Instruction to use:
+	Entered data:
+			1 - firstHour 		between 0-23
+			2 - firstMinute		between 0-59
+			3 - secondHour		between 0-23
+			4 - secondMinute	between 0-59
+		Example: 	14 45	16 59
+	Returnening data:
+		Correct data(was entered):
+			Description:Difference between the two time variables
+				like: -00:12 or +23:26
+				- 	when second time is smoller
+				+	when second time is biger
+			Code:		return 0
+			
+		Incorrect data:
+			Description:Error: illegal input
+			Code:		return 0	
+			
+			
 
  * EX2C:: Transformation of input dates in a calendar format
 With the input date and the two parameters, 
 which amounts to six types of the format of a 
 calendar date, we obtain the result.
+
+			Compile:	g++ -Wall ex2c.cc -o ex2c
+Instruction to use:
+	Entered data:
+			1 - day				between 1-31
+			2 - month			between 1-12
+			3 - year			between 0:(2000-2049)	-99:(1950-1999)	
+			or 					between	1950-2049
+			4 - foramatMonDay	1=European 
+								2=American format
+			formatLongShort		indicate average 
+								1=long 
+								2=medium 
+								3=short 
+        
+		Example: 	28 	12 	89 		1 	2
+					1	2	1982	1	3
+					1	2	1982	2	3
+	Returnening data:
+		Correct data(was entered):
+			Description:With the input date and the two parameters,  
+						which amounts to six types of the format
+						of a calendar date, we obtain the result.
+			Code:		return 0
+			
+		Incorrect data:
+			Description:Error: illegal input.
+			Code:		return 0
