@@ -47,10 +47,20 @@ int main()
     if(newHour<0)
     {   // translate a negative value of the int hours,
         // to the time appearance
-        newHour   = -1*(24 + newHour);
-    }
+        newHour   = (24 + newHour);
+        cout << "-";
+    }else
+        cout << "+";
 
-    cout    << newHour << ":" << newMinute << endl;
+    if(newHour<10)
+        cout << "0";
+
+    cout    << newHour << ":";
+
+    if(newMinute<10)
+        cout << "0";
+
+    cout    << newMinute << endl;
 
 
     return(0);
