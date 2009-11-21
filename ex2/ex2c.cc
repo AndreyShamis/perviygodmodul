@@ -7,7 +7,6 @@
 
 //--------------- including section -------------
 #include <iostream>
-#include <ctime>
 
 //--------------- using section        -------------
 using std::cout;
@@ -133,6 +132,7 @@ int main()
         }
         cout << " ";
     }
+
     if (year<10)
         cout << "0";
     cout << year << endl;
