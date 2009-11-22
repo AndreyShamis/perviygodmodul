@@ -80,12 +80,15 @@ int main()
         year = 2000 + year;
 
     if(formatLongShort == 1)
-    {   //translate the correct date in short format if requested by the user
-        if(year>=2000)
-            year= year - 2000;
-        else if(year<2000)
-            year= year - 1900;
-    }
+        year = year%100;    // translate the correct date in short
+                            // format if requested by the user
+    //{
+        //if(year>=2000)
+        //    year= year - 2000;
+        //else if(year<2000)
+        //    year= year - 1900;
+
+    //}
 
     if(formatLongShort != 3)
     {   //  The block is triggered in the event of a
