@@ -64,7 +64,7 @@ int main()
         newHour--;
     }
 
-    // Start out hour           //
+    // Start out hour
     if(newHour<0)
     {   // translate a negative value of the int hours,
         // to the time appearance
@@ -76,10 +76,10 @@ int main()
     if(newHour<10)
         cout << "0";    // if hour < 10 print '0' like '02'
 
-    cout    << newHour << ":";  //
-    // end out hour WITH ':'    //
+    cout    << newHour << ":";
+    // end out hour WITH ':'
 
-    //start out minute          //
+    //start out minute
     if(newMinute<10)
         cout << "0";    // if minute < 10 print '0' like '04'
 
