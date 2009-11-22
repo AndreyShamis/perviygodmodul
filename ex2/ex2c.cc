@@ -51,7 +51,7 @@ int main()
     switch(month)
     {   // There is a verification of the correctness of the length
         // of the month, test result is passed to the variable "monLen"
-        case 2: monLen =(year%4 == 0 && year%100!=0 || year%400==0) ? 29:28;
+        case 2: monLen =(year%4 == 0 && year%100!=0 || year%400==0) ? 29 : 28;
                 break;
         case 4:
         case 6:
@@ -59,7 +59,6 @@ int main()
         case 11:monLen = 30;
                 break;
         default:monLen = 31;
-
     }
 
     //  Validation of input data, also includes checking the length
@@ -72,30 +71,22 @@ int main()
         return(0);
     }
 
-    cin >> foramatMonDay >> formatLongShort;
+    cin >> foramatMonDay >> formatLongShort;    // Geting print format vars
+
     // Beforehand translating entered by date, in the correct format
     if(year < 100 && year>=50)
         year = 1900 + year;
     else if(year<50)
         year = 2000 + year;
 
-    if(formatLongShort == 1)
-        year = year%100;    // translate the correct date in short
-                            // format if requested by the user
-    //{
-        //if(year>=2000)
-        //    year= year - 2000;
-        //else if(year<2000)
-        //    year= year - 1900;
-
-    //}
+    if(formatLongShort == 1)    // translate the correct date in short
+        year = year%100;        // format if requested by the user
 
     if(formatLongShort != 3)
     {   //  The block is triggered in the event of a
         //  query a short or medium date format
-
-        if(foramatMonDay == 1)
-        {   //  If the first printed the day
+        if(foramatMonDay == 1)  //  If the first printed the day
+        {
             if(day<10)
                 cout << "0";    //  zero for a string type of date
             cout << day << "/";
@@ -103,8 +94,8 @@ int main()
                 cout << "0";    //  zero for a string type of date
             cout << month;
         }
-        else
-        {   //  If the first printed the month
+        else                    //  If the first printed the month
+        {
             if(month<10)
                 cout << "0";    //  zero for a string type of date
             cout << month << "/";;
@@ -118,15 +109,15 @@ int main()
     else if(formatLongShort == 3)
     {   //  block is triggered only if the
         //  user wants to get long date format
-
-        if(foramatMonDay == 1)
-        {   //  If the first printed the day
+        if(foramatMonDay == 1)  //  If the first printed the day
+        {
             if(day<10)
                 cout << "0";    //  zero for a string type of date
             cout << day << " ";
         }
 
         //  Transform and derive nazvpnie months from number to string
+        //  also print blank space after name of month
         switch(month){
             case 1:     cout << "January ";
                         break;
@@ -154,18 +145,19 @@ int main()
                         break;
         }
 
-        if(foramatMonDay == 2)
-        {   //  If the seconf printed the day
+        if(foramatMonDay == 2)  //  If the seconf printed the day
+        {
             if(day<10)
                 cout << "0";    //  zero for a string type of date
             cout  << day;
         }
-        cout << " ";
+        cout << " ";            // Print blank space
     }
 
     if (year<10)
         cout << "0";            //  zero for a string type of date
-    cout << year << endl;
+
+    cout << year << endl;       //  on all programm
 
     return(0);
 }
