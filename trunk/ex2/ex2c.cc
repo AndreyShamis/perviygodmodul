@@ -52,13 +52,13 @@ int main()
     {   // There is a verification of the correctness of the length
         // of the month, test result is passed to the variable "monLen"
         case 2: monLen =(year%4 == 0 && year%100!=0 || year%400==0) ? 29 : 28;
-                break;
+                break;          // only for februar 28 and 29 days
         case 4:
         case 6:
         case 9:
-        case 11:monLen = 30;
+        case 11:monLen = 30;    // months include 30 days
                 break;
-        default:monLen = 31;
+        default:monLen = 31;    // anothers months include 31 days
     }
 
     //  Validation of input data, also includes checking the length
@@ -79,12 +79,15 @@ int main()
     else if(year<50)
         year = 2000 + year;
 
-    if(formatLongShort == 1)    // translate the correct date in short
-        year = year%100;        // format if requested by the user
+
 
     if(formatLongShort != 3)
     {   //  The block is triggered in the event of a
         //  query a short or medium date format
+
+        if(formatLongShort == 1)    // translate the correct date in short
+            year = year%100;        // format if requested by the user
+
         if(foramatMonDay == 1)  //  If the first printed the day
         {
             if(day<10)
