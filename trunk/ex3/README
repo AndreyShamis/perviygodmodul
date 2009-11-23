@@ -1,0 +1,50 @@
+﻿modprog 2010
+Writen by: Andrey Shamis
+id: 321470882
+login:andreysh
+Class: Hadassah/2010
+
+ * EX3A:: 
+
+
+		Compile:	g++ -Wall ex2a.cc -o ex2a
+Instruction to use:
+	Entered data:
+
+	Returnening data:
+		Correct data():
+			Description:
+			Code:		
+			
+		Incorrect data:
+
+
+	
+ * EX3B:: 
+
+
+		Compile:	g++ -Wall ex2a.cc -o ex2a
+Instruction to use:
+	Entered data:
+
+	Returnening data:
+		Correct data():
+			Description:
+			Code:		
+			
+		Incorrect data:
+		
+		
+ * EX3C:: 
+
+
+		Compile:	g++ -Wall ex2a.cc -o ex2a
+Instruction to use:
+	Entered data:
+
+	Returnening data:
+		Correct data():
+			Description:
+			Code:		
+			
+		Incorrect data:
