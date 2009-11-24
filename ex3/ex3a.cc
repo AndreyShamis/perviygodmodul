@@ -1,8 +1,8 @@
 /*
- * EX3A    ::
+ * EX3A    :: Return value of fibonacci by index
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
-
+ *
  */
 
 //--------------- including section -------------
@@ -28,7 +28,6 @@ int main()
     if (fibomacciIndex == 0 || fibomacciIndex == 1) // First and second id in
         result = fibomacciIndex;                // fibo simillar to their value
     else
-    {
         while(countIndex <= fibomacciIndex)
         {
         result = firstP + secondP;
@@ -36,7 +35,6 @@ int main()
         secondP = result;
         countIndex++;
         }
-    }
 
     cout  <<    result << endl;
 
