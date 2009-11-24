@@ -16,21 +16,28 @@ using std::endl;
 //--------------- main                 -------------
 int main()
 {
-    int res = 0, n;
+    int res = 0,countIndex=3, fibomacciIndex;
     int firstP  = 0,
         secondP = 1;
 
 
-    cin >> n;
-    if (n == 1 || n == 2) return n - 1;
-
-    for (int i = 3; i <= n; i++)
+    cin >> fibomacciIndex;
+    if (fibomacciIndex == 1 || fibomacciIndex == 2)
+        cout << fibomacciIndex - 1;
+    else
     {
-    res = firstP + secondP;
-    firstP = secondP;
-    secondP = res;
+        //for (int i = 3; i <= fibomacciIndex; i++)
+        //{
+        while(countIndex <= fibomacciIndex)
+        {
+        res = firstP + secondP;
+        firstP = secondP;
+        secondP = res;
+        countIndex++;
+        }
+        //}
+        cout  <<res << endl;
     }
-    cout  <<res << endl;
     return(0);
 }
 
