@@ -20,7 +20,7 @@ int main()
                 firstP  = 0,    // First and then back fibo variable
                 secondP = 1;    // Second and then front fibo variable
 
-    int     countIndex=2,       //
+    int     countIndex=0,       //
             fibomacciIndex;     // ID of fibonacci needed
 
     cin >> fibomacciIndex;      // Get id needed
