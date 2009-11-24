@@ -41,6 +41,7 @@ int main()
                 if(i - y == 2)
                 {
                     cout << y << " " << i << endl;
+                    return (0);
                 }
                 y = i;
             }
