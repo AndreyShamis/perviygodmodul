@@ -16,17 +16,17 @@ using std::endl;
 //--------------- main                 -------------
 int main()
 {
-    int result,
-        countIndex=2,
-        fibomacciIndex,
-        firstP  = 0,
-        secondP = 1;
+    long int    result,         // Result Variable
+                firstP  = 0,    // First and then back fibo variable
+                secondP = 1;    // Second and then front fibo variable
 
+    int     countIndex=2,       //
+            fibomacciIndex;     // ID of fibonacci needed
 
-    cin >> fibomacciIndex;
+    cin >> fibomacciIndex;      // Get id needed
 
-    if (fibomacciIndex == 0 || fibomacciIndex == 1)
-        result = fibomacciIndex;
+    if (fibomacciIndex == 0 || fibomacciIndex == 1) // First and second id in
+        result = fibomacciIndex;                // fibo simillar to their value
     else
     {
         while(countIndex <= fibomacciIndex)
