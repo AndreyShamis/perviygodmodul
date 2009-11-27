@@ -15,6 +15,9 @@ using std::endl;
 
 //--------------- main                 -------------
 
+    int stam[100];
+    int found = 0;
+
 int simple(int input)
 {   // Function to find if input number is simple
     int index;                          // Used in cicle
@@ -26,12 +29,33 @@ int simple(int input)
     return(1);                          // return 1 if not find devider
 }
 
+int check_stam(int integer)
+{
+    for(int i=0;i<=found; i++)
+    {
+        if(stam[i] == integer)
+        {
+            return(0);
+        }
+    }
+    stam[found] = integer;
+    found++;
+}
+int PrintStam()
+{
+    for(int i=0;i<=found; i++)
+    {
+        cout << stam[i] << endl;
+    }
+    return 0;
+}
 int main()
 {
     int minNumber,  // min Input number variable
         maxNumber,  // max Input number variable,
                     // used too in for cicle
         temp;       // used to save in back finded simle number
+
 
     cin >> minNumber >> maxNumber;
 
@@ -43,11 +67,13 @@ int main()
             {
                 if(minNumber - temp == 2)
                 {
-                    cout << temp << " " << minNumber << endl;
+                  //  cout << temp << " " << minNumber << endl;
                    // return (0);
                 }
+                //cout << minNumber - temp << endl;
+                check_stam(minNumber - temp);
                 temp = minNumber;
             }
-
+PrintStam();
     return(0);
 }
