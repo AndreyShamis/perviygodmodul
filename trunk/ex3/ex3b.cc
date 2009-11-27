@@ -31,19 +31,20 @@ int simple(int input)
 
 int check_stam(int integer)
 {
-    for(int i=0;i<=found; i++)
+    for(int i=1;i<=found; i++)
     {
         if(stam[i] == integer)
         {
             return(0);
         }
     }
-    stam[found] = integer;
     found++;
+    stam[found] = integer;
+
 }
 int PrintStam()
 {
-    for(int i=0;i<=found; i++)
+    for(int i=1;i<=found; i++)
     {
         cout << stam[i] << endl;
     }
@@ -65,6 +66,7 @@ int main()
         if(minNumber%2 == 0)
             minNumber++;
         for (minNumber; minNumber <= maxNumber; minNumber+=2)
+        //cout << minNumber << endl ;
             if(simple(minNumber) == 1)
             {
                 if(minNumber - temp == 2)
