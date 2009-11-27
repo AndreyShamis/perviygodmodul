@@ -62,12 +62,14 @@ int main()
     if(minNumber < 3 || minNumber+3 > maxNumber)
         cout << "Error: Illegal input" << endl;
     else
-        for (minNumber; minNumber <= maxNumber; minNumber++)
+        if(minNumber%2 == 0)
+            minNumber++;
+        for (minNumber; minNumber <= maxNumber; minNumber+=2)
             if(simple(minNumber) == 1)
             {
                 if(minNumber - temp == 2)
                 {
-                  //  cout << temp << " " << minNumber << endl;
+                    cout << temp << " " << minNumber << endl;
                    // return (0);
                 }
                 //cout << minNumber - temp << endl;
