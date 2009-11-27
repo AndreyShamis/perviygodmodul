@@ -15,35 +15,38 @@ using std::endl;
 
 //--------------- main                 -------------
 
-int simple(int n)
-{
-        for(int i=2;i<=n/2;i++)
-                if( (n%i)==0 )
-                        return 0;
-        return 1;
+int simple(int input)
+{   // Function to find if input number is simple
+    int index;                          // Used in cicle
+
+        for(index=2; index <= input/2; index++)
+            if((input%index) ==  0)     // if find devider return 0
+                return (0);
+
+    return(1);                          // return 1 if not find devider
 }
 
 int main()
 {
-    int minNumber,
-        maxNumber;
-
-    int x , y ;
+    int minNumber,  // min Input number variable
+        maxNumber,  // max Input number variable,
+                    // used too in for cicle
+        temp;       // used to save in back finded simle number
 
     cin >> minNumber >> maxNumber;
 
     if(minNumber < 3 || minNumber+3 > maxNumber)
         cout << "Error: Illegal input" << endl;
     else
-        for (int i=minNumber;i<=maxNumber;i++)
-            if( simple(i)==1 )
+        for (minNumber; minNumber <= maxNumber; minNumber++)
+            if(simple(minNumber) == 1)
             {
-                if(i - y == 2)
+                if(minNumber - temp == 2)
                 {
-                    cout << y << " " << i << endl;
-                    return (0);
+                    cout << temp << " " << minNumber << endl;
+                   // return (0);
                 }
-                y = i;
+                temp = minNumber;
             }
 
     return(0);
