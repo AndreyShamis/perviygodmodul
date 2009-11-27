@@ -19,7 +19,7 @@ int main()
     long int    result,         // Result Variable
                 firstP  = 0,    // First and then back fibo variable
                 secondP = 1;    // Second and then front fibo variable
-
+    // MAX value can get in index 44 1836311903
     int     countIndex=0,       //
             fibomacciIndex;     // ID of fibonacci needed
 
@@ -30,10 +30,10 @@ int main()
     else
         while(countIndex <= fibomacciIndex)
         {
-        result = firstP + secondP;
-        firstP = secondP;
-        secondP = result;
-        countIndex++;
+            result = firstP + secondP;
+            firstP = secondP;
+            secondP = result;
+            countIndex++;
         }
 
     cout  <<    result << endl;
