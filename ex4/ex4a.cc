@@ -23,14 +23,24 @@ int main()
 {
     int array_lentgh; // length of the array
     int round[MAX_ARRAY_LENTGH];
-
-    cin << array_lentgh;
-    for(int i=1; i<array_lentgh;i++)
-    {
-
-
-    }
+    int counter1,counter2;
+    int save;
+    cin >> array_lentgh;
 
 
+    for(counter1=0; counter1<array_lentgh; counter1++)
+        cin >> round[counter1];
+
+    for(counter1=0; counter1<array_lentgh; counter1++)
+        for (int counter2=0; counter2<array_lentgh-counter1-1; counter2++)
+            if(round[counter2] > round[counter2+1])
+            {
+                save = round[counter2] ;
+                round[counter2] = round[counter2+1];
+                round[counter2+1] = save;
+            }
+
+    for(counter1=0; counter1<array_lentgh; counter1++)
+        cout << round[counter1] << " ";
     return(0);
 }
