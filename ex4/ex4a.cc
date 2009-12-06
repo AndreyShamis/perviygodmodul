@@ -24,7 +24,7 @@ const int MAX_ARRAY_LENTGH=20;
 //--------------- main                 -------------
 int main()
 {
-    int array_lentgh;           // length of the array
+    int array_lentgh,           // length of the array
         round[MAX_ARRAY_LENTGH],// Array
         count1,count2,          // Counters for FORS
         save;                   // temp variable
