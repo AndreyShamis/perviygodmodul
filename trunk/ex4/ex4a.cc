@@ -20,10 +20,11 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-const int MAX_ARRAY_LENTGH=20;
+
 //--------------- main                 -------------
 int main()
 {
+    const int MAX_ARRAY_LENTGH=20;  // Max lentgh of array
     int array_lentgh,           // length of the array
         round[MAX_ARRAY_LENTGH],// Array
         count1,count2,          // Counters for FORS
