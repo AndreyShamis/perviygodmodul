@@ -16,10 +16,10 @@ const int NUM_OF_STATES=6;  // max lentgh of array
 //--------------- main                 -------------
 int main()
 {
-    int electoralA[NUM_OF_STATES];
-    int voters[NUM_OF_STATES][2];
-    int voters_sum[2];
-    int electoral_sum[2];
+    int electoralA[NUM_OF_STATES],
+        voters[NUM_OF_STATES][2],
+        voters_sum[2],
+        electoral_sum[2];
 
     for(int j=0;j<2;j++)
     {
@@ -50,11 +50,9 @@ int main()
             << voters_sum[1] << " ";    // printing Voters sum for B
 
 
-    if(electoral_sum[0] > electoral_sum[1]
-    || (voters_sum[0] > voters_sum[1] && electoral_sum[0] == electoral_sum[1]))
+    if(electoral_sum[0] > electoral_sum[1])
         cout << "A";
-    else if(electoral_sum[0] < electoral_sum[1]
-    || (voters_sum[1] > voters_sum[0] && electoral_sum[0] == electoral_sum[1]))
+    else if(electoral_sum[0] < electoral_sum[1])
         cout << "B";
     else //if(voters_sum[0] == voters_sum[1])
         cout << "draw";
