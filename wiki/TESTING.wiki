@@ -35,9 +35,17 @@ Use the side by side output format
  מטרה נוספת: לקבץ (zip)
 
 יצירת ארכיון:
+{{{
 tar czvf archive_name.tgz *.cc README
+}}}
 פרישת ארכיון:
+{{{
 tar xzvf archive_name.tgz 
--------------------------------------------------------------------------
+}}}
 
-x – exctract, c – create, z – zip, v – verbose, f - filename
+
+ * x – exctract 
+ * c – create
+ * z – zip
+ * v – verbose
+ * f - filename
