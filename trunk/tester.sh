@@ -1,35 +1,46 @@
 #! /bin/sh
 
-DIR="$1sol/$1$2_test*.in"
+
+clear
+
+if [ ! -e "test" ]
+then 
+	echo "Creating test folder"
+	mkdir "test"
+fi
+
+DIR="$1_sol_test/$1$2_test*.in"
 RESULTS=""
 int=1
 
     if [ -e "$1sol".tgz ] 
 	then 
-		echo "ass"
+		echo "TGZ founded."
 	else
-		mkdir "ex4sol"
+		echo "Start download "$1"sol.tgz"
+		mkdir "ex4_sol_test"
 		wget http://www.hadassah.ac.il/cs/staff/danizobin/modprog1/ex/$1/"$1"sol.tgz
-		tar xzvf "$1"sol.tgz -C ex4sol
+		tar xzf "$1"sol.tgz -C ex4_sol_test
     fi
 	
-	g++ -Wall $1$2.cc -o  $1$2
-	
-mkdir "test"
+echo "Start compiling...."
 
-#http://www.hadassah.ac.il/cs/staff/danizobin/modprog1/ex/ex4/ex4sol.tgz
+g++ -Wall $1$2.cc -o  $1$2	
+#sleep 0.1
+
 for filename in $DIR
 do
 	echo "Start $filename"
 
 		./$1$2 < $filename &> "test/test_my.out"
-		./$1"sol/"$1$2_sol < $filename &> "test/test_sol.out"
+		./$1"_sol_test/"$1$2_sol < $filename &> "test/test_sol.out"
 			
 	cmp "test/test_my.out" "test/test_sol.out" &> /dev/null  
 
 	if [ $? -eq 0 ]        
 		then
 		  echo ""
+		  $RESULTS = $RESULTS + "lol"
 		  #echo $'\n' 
 		else
 		  echo "Upss Not Passeed"
@@ -44,5 +55,12 @@ do
 
 	echo $RESULTS
 
+		
 done
 
+rm $1$2
+
+#rm ex4_sol_test/*
+rm test/*
+rmdir test
+#rmdir ex4_sol_test
