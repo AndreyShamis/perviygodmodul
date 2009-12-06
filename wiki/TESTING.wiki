@@ -1,9 +1,15 @@
 =IN OUT=
 
 
+{{{
+
 school_solution < test1 > test1_school.out
+
 my_solution < test1 > test1_my.out
+
 diff test1_school.out test1_my.out
+
+}}}
 הפלט של  diff צריך להיות ריק !
 
 
@@ -35,4 +41,3 @@ tar xzvf archive_name.tgz
 -------------------------------------------------------------------------
 
 x – exctract, c – create, z – zip, v – verbose, f - filename
-
