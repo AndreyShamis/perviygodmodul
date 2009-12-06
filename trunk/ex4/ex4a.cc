@@ -21,26 +21,29 @@ const int MAX_ARRAY_LENTGH=20;
 //--------------- main                 -------------
 int main()
 {
-    int array_lentgh; // length of the array
-    int round[MAX_ARRAY_LENTGH];
-    int counter1,counter2;
-    int save;
-    cin >> array_lentgh;
+    int array_lentgh;           // length of the array
+        round[MAX_ARRAY_LENTGH],// Array
+        counter1,counter2,      // Counters for FORS
+        save;                   // temp variable
 
+    cin >> array_lentgh;        // getting array lentgh (max=MAX_ARRAY_LENTGH)
 
-    for(counter1=0; counter1<array_lentgh; counter1++)
-        cin >> round[counter1];
+    for(counter1=0; counter1<array_lentgh; counter1++)  // Getting value to arr
+        cin >> round[counter1]; // putting value into array
 
-    for(counter1=0; counter1<array_lentgh; counter1++)
+    for(counter1=0; counter1<array_lentgh; counter1++)  //
         for (int counter2=0; counter2<array_lentgh-counter1-1; counter2++)
             if(round[counter2] > round[counter2+1])
-            {
-                save = round[counter2] ;
-                round[counter2] = round[counter2+1];
-                round[counter2+1] = save;
+            {   // if smaller index array have value biger then next array
+                // change valus between array blocks
+                save = round[counter2] ;    // save value into save
+                round[counter2] = round[counter2+1];// change value between
+                round[counter2+1] = save;   // putting from save new value
+                round[counter2+1] = save;   // putting from save new value
             }
 
-    for(counter1=0; counter1<array_lentgh; counter1++)
-        cout << round[counter1] << " ";
-    return(0);
+    for(counter1=0; counter1<array_lentgh; counter1++)  // printing array
+        cout << round[counter1] << " ";                 // couting array
+
+    return(0);                              // exiting from programm
 }
