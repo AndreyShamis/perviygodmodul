@@ -17,11 +17,14 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+const int MAX_ARRAY_LENTGH=20;
 //--------------- main                 -------------
 int main()
 {
     int array_lentgh; // length of the array
+    int round[MAX_ARRAY_LENTGH];
 
+    cin << array_lentgh;
     for(int i=1; i<array_lentgh;i++)
     {
 
