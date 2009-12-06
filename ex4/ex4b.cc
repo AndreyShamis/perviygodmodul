@@ -28,11 +28,7 @@ int main()
     }
 
     for(int i=0;i<NUM_OF_STATES;i++)
-    {
         cin >> electoralA[i];
-    }
-
-
 
 
     for(int i=0;i<NUM_OF_STATES;i++)
@@ -40,30 +36,27 @@ int main()
         for(int j=0;j<2;j++)
         {
             cin >> voters[i][j];
-
             voters_sum[j] += voters[i][j];
-            //cout << j << " " << voters_sum[j] << " \n";
         }
         if(voters[i][0] > voters[i][1])
             electoral_sum[0] += electoralA[i];    //cout << "A";
         else if(voters[i][1] > voters[i][0])
             electoral_sum[1] += electoralA[i];    //cout << "B";
-        else if(voters[i][j] == voters[i][j])
-            cout << "draw";
     }
 
+    cout    << electoral_sum[0] << " "  // printing Electorats sum for A
+            << electoral_sum[1] << " "  // printing Electorats sum for B
+            << voters_sum[0] << " "     // printing Voters sum for A
+            << voters_sum[1] << " ";    // printing Voters sum for B
 
 
-    cout    << electoral_sum[0] << " "
-            << electoral_sum[1] << " "
-            << voters_sum[0] << " "
-            << voters_sum[1] << " ";
-
-    if(voters_sum[0] > voters_sum[1])
+    if(electoral_sum[0] > electoral_sum[1]
+    || (voters_sum[0] > voters_sum[1] && electoral_sum[0] == electoral_sum[1]))
         cout << "A";
-    else if(voters_sum[1] > voters_sum[0])
+    else if(electoral_sum[0] < electoral_sum[1]
+    || (voters_sum[1] > voters_sum[0] && electoral_sum[0] == electoral_sum[1]))
         cout << "B";
-    else if(voters_sum[0] == voters_sum[1])
+    else //if(voters_sum[0] == voters_sum[1])
         cout << "draw";
 
     cout << endl;
