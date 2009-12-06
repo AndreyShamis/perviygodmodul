@@ -25,13 +25,21 @@ int main()
     }
 
     for(int i=0;i<NUM_OF_STATES;i++)
-    {
-        cin >> electoralA[i];
-    }
+        for(int j=0;j<2;j++)
+            cin >> voters[i][j];
+
+
+
 
     for(int i=0;i<NUM_OF_STATES;i++)
-    {
         cout << electoralA[i] << " | ";
+
+    cout << "\n";
+    for(int i=0;i<NUM_OF_STATES;i++)
+    {
+        for(int j=0;j<2;j++)
+            cout << voters[i][j] << " | ";
+        cout << "\n";
     }
     return(0);
 }
