@@ -18,14 +18,14 @@ int=1
 		echo "TGZ founded."
 	else
 		echo "Start download "$1"sol.tgz"
-		mkdir "ex4_sol_test"
+		mkdir $1"_sol_test"
 		wget http://www.hadassah.ac.il/cs/staff/danizobin/modprog1/ex/$1/"$1"sol.tgz
-		tar xzf "$1"sol.tgz -C ex4_sol_test
+		tar xzf "$1"sol.tgz -C $1"_sol_test"
     fi
 	
 echo "Start compiling...."
 
-g++ -Wall $1$2.cc -o  $1$2	
+g++ -Wall $1/$1$2.cc -o  $1$2	
 #sleep 0.1
 
 for filename in $DIR
@@ -40,7 +40,7 @@ do
 	if [ $? -eq 0 ]        
 		then
 		  echo ""
-		  $RESULTS = $RESULTS + "lol"
+		 # $RESULTS = $RESULTS + "lol"
 		  #echo $'\n' 
 		else
 		  echo "Upss Not Passeed"
@@ -60,7 +60,8 @@ done
 
 rm $1$2
 
-#rm ex4_sol_test/*
+rm $1"_sol_test"/*
 rm test/*
 rmdir test
-#rmdir ex4_sol_test
+rmdir $1"_sol_test"
+rm "$1"sol.tgz
