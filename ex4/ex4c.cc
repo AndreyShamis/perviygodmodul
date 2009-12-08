@@ -20,28 +20,26 @@ int main()
     int user_array_l;
     int arr[ARRAY_LEN];
     int minused=0;
+
+    int i,j;
     cin >> user_array_l;
 
 
     for(int y=0; y<user_array_l; y++)
         cin >> arr[y];
 
-    for(int i=user_array_l;i>=0;--i)
-    {
-        for(int j=0;j<i;j++)
-        {
-            if(arr[j] > arr[j+1])
-            {
-                int temp = arr[j];
-                arr[j]  = arr[j+1];
-                arr[j+1] = temp;
-            }
-        }
-    }
+     for(i=0;i<user_array_l;i++)
+          for(j=1;j<(user_array_l-i);j++)
+             if( arr[j-1]>arr[j] )
+             {
+                 int save = arr[j-1];
+                 arr[j-1] = arr[j];
+                 arr[j]= save;
+             }
 
-    for(int y=0; y<user_array_l; y++)
-        if(arr[y]=>0)
-            minused = y;
+  //  for(int y=0; y<user_array_l; y++)
+   //     if(arr[y]=>0)
+    //        minused = y;
 
     cout << minused << " " << user_array_l-minused;
 
