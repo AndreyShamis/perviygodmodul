@@ -1,0 +1,57 @@
+﻿modprog 2010
+Writen by: Andrey Shamis
+id: 321470882
+login:andreysh
+Class: Hadassah/2010
+
+ * EX4A:: Income classification
+ 
+ *  Plan that defines an array of integers twenty cells.
+ *  The plan calls for the user natural number n less than
+ *  or equal to twenty, which indicates how many numbers the
+ *  user wants to enter the array. Then the program reads n numbers.
+ 
+		Compile:	g++ -Wall ex4a.cc -o ex4a
+Instruction to use:
+	Entered data:	Like: 
+10
+-5 6 8 -4 3 20 0 1 25 26
+	Returnening data:	sorted
+
+
+	
+ * EX4B:: U.S. President selection system
+ 
+Each country is allocated a fixed number in the United States of Alktorim. 
+"Winner in that country 'won' every 'Halktorim" of that country. 
+Winning the general election is accumulated more Alktorim (even if in 
+practice he gained fewer votes of his colleagues among the voters, as 
+indeed happened Kennedy against Nixon). to assume that interest 
+if any in his bag, then none of the candidates does not get 
+Balktorim of that country.
+
+		Compile:	g++ -Wall ex4b.cc -o ex4b
+Instruction to use:
+	Entered data: like
+ 33 28 29 19 2 15
+ 354 678 800 1000 0 456 10 11 203 188 104 39
+	Returnening data:
+125 73 3000123 3123123 A			
+		
+		
+ * EX4C:: Counting negative / E - Negative array sorted
+
+ The program sorts the numbers entered her small grow using Bubble sort 
+ algorithm. After sorting the program to some negative values, and some 
+ non negative values (positive or zero) are a pair of array and display data. 
+ So let the program includes two numbers with a space between them (the first 
+ indicates how the array contains negative values, a few other non negative values).
+
+		Compile:	g++ -Wall ex4c.cc -o ex4c
+Instruction to use:
+	Entered data: like:
+6
+-1 -2 -3 -4 -5 -6
+	Returnening data: numbers of negative and positive numbers
+
+			

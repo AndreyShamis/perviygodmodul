@@ -1,0 +1,52 @@
+﻿modprog 2010
+Writen by: Andrey Shamis
+id: 321470882
+login:andreysh
+Class: Hadassah/2010
+
+ * EX3A:: Return value of fibonacci by index
+
+		Compile:	g++ -Wall ex3a.cc -o ex3a
+Instruction to use:
+	Entered data:	index of fibonacci
+					max 46
+	Returnening data:
+		Correct data():fibonache value	
+		Incorrect data: not included
+
+
+	
+ * EX3B:: Program that finds the two prime numbers, with the difference in the two and displays
+
+		Compile:	g++ -Wall ex3b.cc -o ex3b
+Instruction to use:
+	Entered data: integers 
+					minimal 3
+					max 3 more then minimal 
+
+	Returnening data:
+		Correct data(0):	two prime numbers ot nothin			
+		Incorrect data(1): Error: Illegal input
+		
+		
+ * EX3C:: Monotonous rows of data showing up / down
+Print program
+The series of numbers in rows, with a line break is performed with changing the order of numbers
+Series up and down and vice versa
+
+		Compile:	g++ -Wall ex3c.cc -o ex3c
+Instruction to use:
+	Entered data:
+		integers like 3 5 6 8 4 2 -1 - 3 6 5 4 1 3 0
+				0 is to exit
+	Returnening data:
+		Correct data():
+				3 5 6 8
+				8 4 2 –1 –3
+				-3 6
+				6 5 4 1
+				1 3
+				asc= 3 		-===	going up
+				des= 2		-===	going down
+				
+				
