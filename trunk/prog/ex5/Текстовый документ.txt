@@ -1,0 +1,98 @@
+/*
+ * EX5A    ::
+ * =============================================================
+ * Writen by: Andrey Shamis, id: 321470882, login:andreysh
+ */
+
+//--------------- including section -------------
+#include <iostream>
+#include <cstdlib>
+
+//--------------- using section        -------------
+using std::cout;
+using std::cin;
+using std::endl;
+
+
+//--------------- main                 -------------
+int main()
+{
+    const int MAX_ROWS = 10;
+    const int MAX_COLS = 20;
+
+    int matrix[MAX_ROWS][MAX_COLS],
+        matrix_sum[MAX_ROWS+MAX_COLS][1], // [][0 negative or 1=positive]
+        row, cols,i,j;
+    //abs(x)
+    cin >> row >> cols;
+    for(i=0;i<row+cols;i++)
+
+            {
+            matrix_sum[i][0]=0;
+            matrix_sum[i][1]=0;
+    // cout << matrix_sum[((i+1)*(j+1)+j)][1] << " " << matrix_sum[((i+1)*(j+1)+j)][1] << endl;
+            }
+
+    for(i=0;i<row;i++)
+        for(j=0;j<cols;j++)
+        {
+            cin >> matrix[i][j];
+
+        }
+
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<cols;j++)
+        {
+            cout << matrix[i][j] << "\t";
+
+        }
+        cout << endl;
+    }
+
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<cols;j++)
+            if (matrix[i][j] >= 0)
+            {
+                matrix_sum[i][1]+=matrix[i][j];
+                cout << matrix_sum[i][1] << " /rc plus/";
+            }
+            else
+            {
+                matrix_sum[i][0]-=matrix[i][j];
+                cout << matrix_sum[i][0] << " /rc minus/";
+            }
+    }
+cout << "\n";
+    for(i=0;i<cols;i++)
+    {
+        for(j=0;j<row;j++)
+            if (matrix[i][j] >= 0)
+            {
+                matrix_sum[row+j][1]+=matrix[j][i];
+                cout << matrix_sum[row+j][1] << " /cr minus/" << row << " /" << row+j << "/";
+            }
+            else
+            {
+                matrix_sum[row+j][0]-=matrix[j][i];
+                cout << matrix_sum[row+j][0] << " /cr minus/";
+            }
+    }
+
+//if (matrix[i][j] >= 0)
+ //   matrix_sum[((i+1)*(j+1)+j)][1]= +matrix[i][j];
+  //      else
+  //          matrix_sum[((i+1)*(j+1)+j)][0]=-matrix[i][j];
+
+    for(i=0;i<row+cols;i++)
+    {
+          cout << "\n" << i<< ":-" << matrix_sum[i][0] << " +" << matrix_sum[i][1] << "!} - {" ;
+        //for(j=0;j<MAX_ROWS+MAX_COLS;j++)
+           // cout << matrix_sum[((i+1)*(j+1)+j)][1] << " " << matrix_sum[((i+1)*(j+1)+j)][1] << endl;
+    }
+
+cout << endl;
+    return(0);
+}
+
