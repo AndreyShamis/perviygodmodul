@@ -1,4 +1,4 @@
-/*
+﻿/*
  * EX5A    ::
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
@@ -60,7 +60,6 @@ int main()
         cout << "\n Start Rows \n";
         for(j=0;j<cols;j++)
         {
-           // cout << "" << endl;
             cout << "\t Matrix:" << matrix[i][j] << "\t i:"
             << i<< "\t j:" << j  << endl;
 
