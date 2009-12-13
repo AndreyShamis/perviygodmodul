@@ -75,7 +75,7 @@ int main()
             {
                 matrix_rows[i][0]+=matrix[i][j];
                 matrix_cols[j][0]+=matrix[i][j];
-//
+////
             }
                 //cout << matrix_rows[i][1] << " " << matrix_rows[i][0] << "\n";
                 //cout << matrix_rows[i+1][1] << " " << matrix_rows[i+1][0] << "\n";
