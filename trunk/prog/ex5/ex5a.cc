@@ -29,7 +29,7 @@ int main()
     cin >> row >> cols;
     for(i=0;i<row;i++)
     {
-        cout << i << endl;
+        //cout << i << endl;
         matrix_rows[i][0]=0;
         matrix_rows[i][1]=0;
     }
@@ -103,20 +103,21 @@ int bigger=0;
 int output_col=0;
 int output_row=0;
 
-    for(i=0;i<cols;i++)
-    {
-        if(matrix_cols[i][3]>bigger)
-        {
-            bigger = matrix_cols[i][3];
-            output_col = i;
-        }
-    }
+
     for(i=0;i<row;i++)
     {
         if(matrix_rows[i][3]>bigger)
         {
             bigger = matrix_rows[i][3];
             output_row = i;
+        }
+    }
+    for(i=0;i<cols;i++)
+    {
+        if(matrix_cols[i][3]>bigger)
+        {
+            bigger = matrix_cols[i][3];
+            output_col = i;
         }
     }
 
@@ -126,9 +127,9 @@ int output_row=0;
     }
     else
     {
-        cout << "cols " << output_col << endl;
+        cout << "col " << output_col << endl;
     }
-cout << endl;
+
     return(0);
 }
 
