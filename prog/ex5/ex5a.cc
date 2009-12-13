@@ -59,18 +59,22 @@ int main()
                 matrix_rows[i][0]+=matrix[i][j];
                 matrix_cols[j][0]+=matrix[i][j];
             }
+    for(i=0;i<row;i++)
+        matrix_rows[i][2] = abs(matrix_rows[i][1]+matrix_rows[i][0]);
+    for(i=0;i<cols;i++)
+        matrix_cols[i][2] = abs(matrix_cols[i][1]+matrix_cols[i][0]);
 
     for(i=0;i<row;i++)
-        if(matrix_rows[i][3]>bigger)
+        if(matrix_rows[i][2]>bigger)
         {
-            bigger = matrix_rows[i][3];
+            bigger = matrix_rows[i][2];
             output_row = i;
         }
 
     for(i=0;i<cols;i++)
-        if(matrix_cols[i][3]>bigger)
+        if(matrix_cols[i][2]>bigger)
         {
-            bigger = matrix_cols[i][3];
+            bigger = matrix_cols[i][2];
             output_col = i;
         }
 
