@@ -31,42 +31,51 @@ int main()
         for(j=0;j<cols;j++)
             cin >> matrix[i][j];
 
-int side_horisontale=0;
-int side_verticale=0;
-int max_found=0;
-int start=0,end=0;
-int p=0;
+int bigger=0;
+int big_count=0;
+int start_r=0,end_r=0;
+int start_c=0,end_c=0;
 
     for(i=0;i<row-1;i++)
-    {
-            p=0;
         for(j=0;j<cols-1;j++)
         {
-            for(x=i;x<row-1;x++)
+            for(x=i;x<row;x++)
             {
-                for(y=j;y<cols-1;y++)
+                for(y=j;y<cols;y++)
                 {
                     if(matrix[x][y+1]>matrix[x][y])
                     {
-
-                            start=y;
+                        big_count = ((y - j)+1)*((x - i)+1);
+                        if(big_count>bigger)
+                        {
+                            bigger =big_count;
+                            start_r=i;
+                            end_r=x;
+                            start_c=j;
+                            end_c=y;
+                        }
+                       //     start=y;
                       //  side_horisontale =p;
                     }
                     else
                     {
-                        end = y - start;
-                        side_horisontale = end;
+                       // end = y - j;
+                       // side_horisontale = end;
+                       // cout << ((y - j)+1)*((x - i)+1) << endl << endl;
+\
                         break;
                     }
-                    cout << "\t " << start << " " << end
-                    << "\t " << i  << " " << j << " " << x << " " << y  << "\n";
+                    cout << matrix[x][y] << "\t " << start_r << " " << end_r << "\t " << i  << " " << j << " " << x << " " << y  << "\n";
                 }
-
-
 
             }
         }
-    }
+        cout
+                <<  start_r     << " "
+                <<  start_c     << " "
+                <<  end_r       << " "
+                <<  end_c       << " ";
+
 cout << endl;
     return(0);
 }
