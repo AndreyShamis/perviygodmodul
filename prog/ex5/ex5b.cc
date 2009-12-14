@@ -43,19 +43,21 @@ int start_c=0,end_c=0;
             {
                 for(y=j;y<cols;y++)
                 {
-                    if(matrix[x][y+1]>matrix[x][y])
+                    if(matrix[x][y+1]>=matrix[x][y])
                     {
                         big_count = ((y - j)+1)*((x - i)+1);
                         if(big_count>bigger)
                         {
                             bigger =big_count;
                             start_r=i;
-                            end_r=x;
+                            end_r=x+1;
                             start_c=j;
                             end_c=y;
+                            cout << "bi t " << big_count << "\n";
                         }
                        //     start=y;
                       //  side_horisontale =p;
+
                     }
                     else
                     {
@@ -65,10 +67,12 @@ int start_c=0,end_c=0;
 \
                         break;
                     }
-                    cout << matrix[x][y] << "\t " << start_r << " " << end_r << "\t " << i  << " " << j << " " << x << " " << y  << "\n";
+                    //cout << matrix[x][y] << "\t " << start_r << " " << end_r << "\t " << i  << " " << j << " " << x << " " << y  << "\n";
                 }
 
+
             }
+           // cout <<"\t " << start_r << " " << end_r << "\t " << start_c  << " " << end_c<< "\n";
         }
         cout
                 <<  start_r     << " "
