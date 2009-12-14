@@ -32,7 +32,7 @@ int max_avail=0;
     // Looking for max len can be count
     max_avail = (row<cols)? row:cols; // taken from inters
     max_avail = (max_avail%2)? max_avail:max_avail-1; // putting to izugi
-    cout << max_avail << "\n";
+    //cout << max_avail << "\n";
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
             cin >> matrix[i][j];
@@ -54,27 +54,29 @@ bool yaalom = false;
             {
 
                 glub=1;
-                for(x=i+1;x<row-2;x++)
+                for(x=i+1;x<row,yaalom;x++)
                 {
                     if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
-                        glub+=2;
+                        glub++;
                     else
                         break;
-                   for(y=j-((glub+1)/2);y<=j+((glub+1)/2);y++)
-                    {
-                        if(matrix[i][j] != matrix[y][x])
-                        {
+                   for(y=j-((glub+1)/2);y<j+((glub+1)/2);y++)
+                        if(matrix[i][j] != matrix[y][x]){
+                            glub--;
+                            yaalom=false;
+                            cout << "tut " << matrix[i][j] << " " << matrix[y][x] << "\n";
                             break;
+
                         }
-                    }
+
                 }
-                cout << i << " " << j << " " << glub  <<  " /" << matrix[i][j] << "/. " ;
+                cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                 yaalom=true;
 
             }
         }
     }
-cout << endl;
+//cout << endl;
     return(0);
 }
 
