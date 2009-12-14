@@ -1,10 +1,10 @@
 #! /bin/bash
+clear
 
 echo "============================================================================="
 echo "============================================================================="
 echo "============================================================================="
-echo "============================================================================="
-clear
+
 
 if [ ! -e "test" ]
 then
@@ -45,12 +45,14 @@ g++ -Wall $1/$1$2.cc -o  $1$2
 					./$1$2 < $filename &> "test/test_my.out"
 					./$1"_sol_test/"$1$2_sol < $filename &> "test/test_sol.out"
 
-				diff "test/test_my.out" "test/test_sol.out" &> /dev/null
+				diff -b -y "test/test_my.out" "test/test_sol.out" &> test/diff_out.out
+				#/dev/null
 				if [ $? -eq 0 ]
 					then
 					  echo ""
 					else
-					  echo "Upss Not Passeed! - INPUT::"
+						cat test/diff_out.out
+#					  echo "Upss Not Passeed! - INPUT::"
 					  cat  $filename
 					  echo "OUTPUT YOUR"
 					  echo "|- - - - - - - - -- - - - - - - - -"
