@@ -53,18 +53,20 @@ bool yaalom = false;
                 matrix[i][j] != matrix[i+1][j-2] )
             {
 
-                glub=3;
-                for(x=i+3;x<row-2;x+=2)
+                glub=1;
+                for(x=i+1;x<row-2;x++)
                 {
-                    if(matrix[i][j] == matrix[x][j] && matrix[i][j] == matrix[x+1][j])
-                    {
-                        if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
-                            glub+=2;
-                        else
-                            break;
-                    }
+                    if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
+                        glub+=2;
                     else
                         break;
+                   for(y=j-((glub+1)/2);y<=j+((glub+1)/2);y++)
+                    {
+                        if(matrix[i][j] != matrix[y][x])
+                        {
+                            break;
+                        }
+                    }
                 }
                 cout << i << " " << j << " " << glub  <<  " /" << matrix[i][j] << "/. " ;
                 yaalom=true;
