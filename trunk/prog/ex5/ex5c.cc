@@ -52,12 +52,16 @@ bool yaalom = false;
                 matrix[i][j] != matrix[i+1][j+2] &&
                 matrix[i][j] != matrix[i+1][j-2] )
             {
+
                 glub=3;
                 for(x=i+3;x<row-2;x+=2)
                 {
                     if(matrix[i][j] == matrix[x][j] && matrix[i][j] == matrix[x+1][j])
                     {
-                        glub+=2;
+                        if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
+                            glub+=2;
+                        else
+                            break;
                     }
                     else
                         break;
