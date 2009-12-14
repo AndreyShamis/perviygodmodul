@@ -17,16 +17,17 @@ diff test1_school.out test1_my.out
 =DIFF=
 Synopsis: diff [ options ] from-file to-file
 Some of what can [options] be:
--b, --ignore-space-change
+
+*-b, --ignore-space-change
 Ignore changes in amount of white space
 
--i, --ignore-case 
+*-i, --ignore-case 
 Ignore changes in case; consider upper- and lower-case letters equivalent
 
--w, --ignore-all-space 
+*-w, --ignore-all-space 
 Ignore white space when comparing lines
 
--y, --side-by-side 
+*-y, --side-by-side 
 Use the side by side output format
 
 =TAR=
