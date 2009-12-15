@@ -70,6 +70,11 @@ bool yaalom = false;
                         }
 
                 }
+                //nayti glubinu
+
+                //po trokam proverit pravilnost kajdogog stolbca v dannom ryady
+
+
                 cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                 yaalom=true;
 
