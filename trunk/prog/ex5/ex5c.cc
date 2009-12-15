@@ -43,20 +43,47 @@ bool yaalom = false;
     {
         for(j=1;j<cols-1;j++)
         {
+            //eto uslovie vsegda doljno proiskodit dlya kajdogo rubina
             if( matrix[i][j] != matrix[i][j+1] &&
                 matrix[i][j] != matrix[i][j-1] &&
                 matrix[i][j] == matrix[i+1][j] &&
-                matrix[i][j] == matrix[i+2][j] &&
                 matrix[i][j] == matrix[i+1][j-1] &&
                 matrix[i][j] == matrix[i+1][j+1] &&
-                matrix[i][j] != matrix[i+1][j+2] &&
-                matrix[i][j] != matrix[i+1][j-2] )
+                matrix[i][j] == matrix[i+2][j])
             {
 
+                //nayti glubinu
+                glub=3;
+                // nahodim glubinu
+                for(x=i+3;x<row-1;x+=2)
+                    if(matrix[i][j] == matrix[x][j] &&  matrix[i][j] == matrix[x+1][j])
+                        glub+=2;
+                    else
+                        break;
+                // znaem tochnuyu glubinu
+               // cout << "\n - # ---- " << glub << "--------------:   :  \t ." << 1+ j-((glub+1)/2) << " "   << endl ;
+
+                // eta shtuchka esit vse levie rubini (pochti)
+                if(1+ j-((glub+1)/2) >=0)
+                {
+                cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                yaalom=true;
+                }
+                //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                // proverit pravelnost rubina
+                // dlina doljna podhodit
+                // esli ne podhoodit znachit eto ne rubin
+
+                // 2 stolbca uje proverili
+                // proveryaem pravilnost shirini if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
+
+                // proveryaem pravilnie i nepravilnie kubiki
+
+
+/*
                 glub=1;
                 for(x=i+1;x<row,yaalom;x++)
-                {
-                    if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
+                {  if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
                         glub++;
                     else
                         break;
@@ -66,17 +93,10 @@ bool yaalom = false;
                             yaalom=false;
                             cout << "tut " << matrix[i][j] << " " << matrix[y][x] << "\n";
                             break;
-
                         }
-
-                }
-                //nayti glubinu
-
+                } */
                 //po trokam proverit pravilnost kajdogog stolbca v dannom ryady
 
-
-                cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
-                yaalom=true;
 
             }
         }
