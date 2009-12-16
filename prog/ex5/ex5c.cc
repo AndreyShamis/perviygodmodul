@@ -66,7 +66,7 @@ bool yaalom = false;
                 // eta shtuchka esit vse levie rubini (pochti)
                 if(1+ j-((glub+1)/2) >=0) // proveryaem pravilnost shiroti
                 {
-                   cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                   //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                     yaalom=true;
                     // looking in diamond like sulam with madregot
 
@@ -77,20 +77,54 @@ bool yaalom = false;
                     //int godel_cela;
                     int sidel; // godel cela from center
                     sidel = ((glub+1)/2);
-            cout << sidel << ":" << j << " " << j+sidel << " " << i+sidel-1<< " " << i+sidel-1+sidel << " row:"   <<   "\n\n";
+         //  cout << sidel << " x:[" << i+sidel-1<< ";" << i+sidel-1+sidel << "]"<< ":y[" << j << ";" << j+sidel << "]" << "\n\n";
 
 int p=0;
                         for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
                         {
 
-                          cout << " x:" << x << " ";
+                          //cout << " x:" << x << " ";
                             for(y=j;y<j+sidel-p ;y++)
+                            {
+                                //cout << " y:" << y << " :" << 2*j-y << "\n";
+
+                                if(y==j)
                                 {
-                                   cout << " y:" << y << " ";
+                                    cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
+                                    if(j-sidel>=0)
+                                    {
+                                        if(matrix[i][j]==matrix[x][j-sidel])
+                                        {
+                                            cout << "Konec laja" << endl;
+                                            yaalom = false;
+                                        }
+
+                                    }
+                                    if(j+sidel<=cols)
+                                    {
+                                        if(matrix[i][j]==matrix[x][j+sidel])
+                                        {
+                                            cout << "Konec laja" << endl;
+                                            yaalom = false;
+                                        }
+
+                                    }
+
                                 }
-                            cout << "\n";
+
+                                if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
+                                {
+                                    //cout << "\n UPS:" << matrix[x][y] << "\n";
+                                    yaalom = false;
+                                }
+
+                            }
+                           // cout << "\n";
                             p++;
                         }
+
+                        if(yaalom)
+                            cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
 
                //     for(x=glub-2;x<glub;x++)
                   //  cout << "ggg :  : "<< glub-x << "\n";
@@ -102,7 +136,7 @@ int p=0;
                          //   cout << matrix[x][y] << " ";
                        //     }
                       //  }
-                        cout << "\n";
+                       // cout << "\n";
                 }
                 else
                 {
