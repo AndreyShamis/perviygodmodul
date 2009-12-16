@@ -20,7 +20,10 @@ int main()
     const int MAX_COLS = 20;
 
 
-
+int glub;
+bool yaalom = false;
+int sidel; // godel cela from center
+int p=0;
     int matrix[MAX_ROWS][MAX_COLS],
         //matrix_sum[MAX_ROWS+MAX_COLS][1], // [][0 negative or 1=positive]
 
@@ -37,10 +40,7 @@ int max_avail=0;
         for(j=0;j<cols;j++)
             cin >> matrix[i][j];
 
-int glub;
-bool yaalom = false;
-int sidel; // godel cela from center
-int p=0;
+
     for(i=0;i<row-2;i++)
     {
         for(j=1;j<cols-1;j++)
@@ -53,7 +53,6 @@ int p=0;
                 matrix[i][j] == matrix[i+1][j+1] &&
                 matrix[i][j] == matrix[i+2][j])
             {
-
                 //nayti glubinu
                 glub=3;
                 // nahodim glubinu
@@ -93,9 +92,8 @@ int p=0;
                           //cout << " x:" << x << " ";
                         for(y=j;y<j+sidel-p ;y++)
                         {
-                            if(y==j)//cout << " y:" << y << " :" << 2*j-y << "\n";
+                            if(y==j)// proverka kace
                             {
-                            // cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
                                 if(j-sidel>=0)
                                     if(matrix[i][j]==matrix[x][j-sidel])
                                         yaalom = false;//cout << "Konec laja left" << endl;
@@ -104,27 +102,25 @@ int p=0;
                                     if(matrix[i][j]==matrix[x][j+sidel])
                                         yaalom = false;//cout << "Konec laja right" << endl;
                             }
+                            else if(y==j+sidel-p-1) //proverka na stupenkax X
+                                if(matrix[i][j]==matrix[x][y+1] || matrix[i][j]==matrix[x][2*j-y-1])
+                                    yaalom = false;
 
+                            // proverka kubikov
                             if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
-                            {
                                 yaalom = false; //cout << "\n UPS:" << matrix[x][y] << "\n";
-                            }
-
                         }
-                           // cout << "\n";
-                        p++;
-                    }
-                        //cout << "\npo:\n";
-                    if(yaalom)
-                    {
-                        cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                        p++; // minustor stupenek
                     }
 
-                    cout << "end:\n\n";
-                }
-                else
-                {
-                    break;
+                    if(yaalom == 1)
+                    {
+                        //cout  << "\t";
+                        cout << i << " " << j << " " << glub  <<  "\n";
+
+                    }
+
+
                 }
                 //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                 // proverit pravelnost rubina
