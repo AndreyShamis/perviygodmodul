@@ -75,41 +75,57 @@ bool yaalom = false;
                     //13 x
                     //x
                     //int godel_cela;
+                    //cout << "Start\n";
                     int sidel; // godel cela from center
                     sidel = ((glub+1)/2);
-         //  cout << sidel << " x:[" << i+sidel-1<< ";" << i+sidel-1+sidel << "]"<< ":y[" << j << ";" << j+sidel << "]" << "\n\n";
+                    //cout << " x:[" << i+sidel-1<< ";" << i+sidel-1+sidel << "]"<< ":y[" << j << ";" << j+sidel << "]" << "\n\n";
 
-int p=0;
+                    int p=0;
                         for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
                         {
-
+                            if(x==i+sidel-1)
+                            {
+                                //cout <<  "[" << x-sidel << "] "  <<  "[" << x+sidel << "]" << endl;
+                                if(x-sidel>=0)
+                                {
+                                    if(matrix[i][j]==matrix[x-sidel][j])
+                                    {
+                                        //cout << "Konec laja up" << endl;
+                                        yaalom = false;
+                                    }
+                                }
+                                if(x+sidel<row)
+                                {
+                                    if(matrix[i][j]==matrix[x+sidel][j])
+                                    {
+                                        //cout << "Konec laja down " << matrix[x+sidel][j] << endl;
+                                        yaalom = false;
+                                    }
+                                }
+                            }
                           //cout << " x:" << x << " ";
                             for(y=j;y<j+sidel-p ;y++)
                             {
                                 //cout << " y:" << y << " :" << 2*j-y << "\n";
-
                                 if(y==j)
                                 {
-                                    cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
+                                   // cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
                                     if(j-sidel>=0)
                                     {
                                         if(matrix[i][j]==matrix[x][j-sidel])
                                         {
-                                            cout << "Konec laja" << endl;
+                                            //cout << "Konec laja left" << endl;
                                             yaalom = false;
                                         }
-
                                     }
-                                    if(j+sidel<=cols)
+                                    if(j+sidel<cols)
                                     {
                                         if(matrix[i][j]==matrix[x][j+sidel])
                                         {
-                                            cout << "Konec laja" << endl;
+                                            //cout << "Konec laja right" << endl;
                                             yaalom = false;
                                         }
-
                                     }
-
                                 }
 
                                 if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
@@ -122,21 +138,12 @@ int p=0;
                            // cout << "\n";
                             p++;
                         }
-
+                        //cout << "\npo:\n";
                         if(yaalom)
+                        {
                             cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
-
-               //     for(x=glub-2;x<glub;x++)
-                  //  cout << "ggg :  : "<< glub-x << "\n";
-                    //    for(y=1+j-((glub+1)/2);y<(1+j-((glub+1)/2))+glub-1;y++)
-                      //  {
-
-                         //   if(matrix[i][j] == matrix[x][y])
-                      //      {
-                         //   cout << matrix[x][y] << " ";
-                       //     }
-                      //  }
-                       // cout << "\n";
+                        }
+                        cout << "end:\n\n";
                 }
                 else
                 {
