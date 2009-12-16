@@ -55,19 +55,58 @@ bool yaalom = false;
                 //nayti glubinu
                 glub=3;
                 // nahodim glubinu
-                for(x=i+3;x<row-1;x+=2)
+                for(x=i+2;x<row-1;x+=2)
                     if(matrix[i][j] == matrix[x][j] &&  matrix[i][j] == matrix[x+1][j])
                         glub+=2;
                     else
                         break;
                 // znaem tochnuyu glubinu
-               // cout << "\n - # ---- " << glub << "--------------:   :  \t ." << 1+ j-((glub+1)/2) << " "   << endl ;
+               // cout << i << " " << j << " " << glub  << ":\t  " << 1+ j-((glub+1)/2) << "." << endl ;
 
                 // eta shtuchka esit vse levie rubini (pochti)
-                if(1+ j-((glub+1)/2) >=0)
+                if(1+ j-((glub+1)/2) >=0) // proveryaem pravilnost shiroti
                 {
-                cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
-                yaalom=true;
+                   cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                    yaalom=true;
+                    // looking in diamond like sulam with madregot
+
+                    //13 13 13 x
+                    //13 13 x
+                    //13 x
+                    //x
+                    //int godel_cela;
+                    int sidel; // godel cela from center
+                    sidel = ((glub+1)/2);
+            cout << sidel << ":" << j << " " << j+sidel << " " << i+sidel-1<< " " << i+sidel-1+sidel << " row:"   <<   "\n\n";
+
+int p=0;
+                        for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
+                        {
+
+                          cout << " x:" << x << " ";
+                            for(y=j;y<j+sidel-p ;y++)
+                                {
+                                   cout << " y:" << y << " ";
+                                }
+                            cout << "\n";
+                            p++;
+                        }
+
+               //     for(x=glub-2;x<glub;x++)
+                  //  cout << "ggg :  : "<< glub-x << "\n";
+                    //    for(y=1+j-((glub+1)/2);y<(1+j-((glub+1)/2))+glub-1;y++)
+                      //  {
+
+                         //   if(matrix[i][j] == matrix[x][y])
+                      //      {
+                         //   cout << matrix[x][y] << " ";
+                       //     }
+                      //  }
+                        cout << "\n";
+                }
+                else
+                {
+                    break;
                 }
                 //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                 // proverit pravelnost rubina
