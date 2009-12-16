@@ -39,6 +39,8 @@ int max_avail=0;
 
 int glub;
 bool yaalom = false;
+int sidel; // godel cela from center
+int p=0;
     for(i=0;i<row-2;i++)
     {
         for(j=1;j<cols-1;j++)
@@ -69,81 +71,56 @@ bool yaalom = false;
                    //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
                     yaalom=true;
                     // looking in diamond like sulam with madregot
-
                     //13 13 13 x
                     //13 13 x
                     //13 x
                     //x
-                    //int godel_cela;
-                    //cout << "Start\n";
-                    int sidel; // godel cela from center
                     sidel = ((glub+1)/2);
-                    //cout << " x:[" << i+sidel-1<< ";" << i+sidel-1+sidel << "]"<< ":y[" << j << ";" << j+sidel << "]" << "\n\n";
-
-                    int p=0;
-                        for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
+                    p=0;
+                    for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
+                    {
+                        if(x==i+sidel-1)
                         {
-                            if(x==i+sidel-1)
-                            {
-                                //cout <<  "[" << x-sidel << "] "  <<  "[" << x+sidel << "]" << endl;
-                                if(x-sidel>=0)
-                                {
-                                    if(matrix[i][j]==matrix[x-sidel][j])
-                                    {
-                                        //cout << "Konec laja up" << endl;
-                                        yaalom = false;
-                                    }
-                                }
-                                if(x+sidel<row)
-                                {
-                                    if(matrix[i][j]==matrix[x+sidel][j])
-                                    {
-                                        //cout << "Konec laja down " << matrix[x+sidel][j] << endl;
-                                        yaalom = false;
-                                    }
-                                }
-                            }
+                            if(x-sidel>=0)
+                                if(matrix[i][j]==matrix[x-sidel][j])
+                                    yaalom = false;//cout << "Konec laja up" << endl;
+
+
+                            if(x+sidel<row)
+                                if(matrix[i][j]==matrix[x+sidel][j])
+                                    yaalom = false;//cout << "Konec laja down " << matrix[x+sidel][j] << endl;
+                        }
                           //cout << " x:" << x << " ";
-                            for(y=j;y<j+sidel-p ;y++)
-                            {
-                                //cout << " y:" << y << " :" << 2*j-y << "\n";
-                                if(y==j)
-                                {
-                                   // cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
-                                    if(j-sidel>=0)
-                                    {
-                                        if(matrix[i][j]==matrix[x][j-sidel])
-                                        {
-                                            //cout << "Konec laja left" << endl;
-                                            yaalom = false;
-                                        }
-                                    }
-                                    if(j+sidel<cols)
-                                    {
-                                        if(matrix[i][j]==matrix[x][j+sidel])
-                                        {
-                                            //cout << "Konec laja right" << endl;
-                                            yaalom = false;
-                                        }
-                                    }
-                                }
-
-                                if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
-                                {
-                                    //cout << "\n UPS:" << matrix[x][y] << "\n";
-                                    yaalom = false;
-                                }
-
-                            }
-                           // cout << "\n";
-                            p++;
-                        }
-                        //cout << "\npo:\n";
-                        if(yaalom)
+                        for(y=j;y<j+sidel-p ;y++)
                         {
-                            cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                            if(y==j)//cout << " y:" << y << " :" << 2*j-y << "\n";
+                            {
+                            // cout <<  "[" << j-sidel << "] "  <<  "[" << j+sidel << "]" << endl;
+                                if(j-sidel>=0)
+                                    if(matrix[i][j]==matrix[x][j-sidel])
+                                        yaalom = false;//cout << "Konec laja left" << endl;
+
+                                if(j+sidel<cols)
+                                    if(matrix[i][j]==matrix[x][j+sidel])
+                                        yaalom = false;//cout << "Konec laja right" << endl;
+                            }
+
+                            if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
+                            {
+                                yaalom = false; //cout << "\n UPS:" << matrix[x][y] << "\n";
+                            }
+
                         }
-                        cout << "end:\n\n";
+                           // cout << "\n";
+                        p++;
+                    }
+                        //cout << "\npo:\n";
+                    if(yaalom)
+                    {
+                        cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
+                    }
+
+                    cout << "end:\n\n";
                 }
                 else
                 {
