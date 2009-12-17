@@ -35,15 +35,45 @@ int bigger=0, gvul=0;
 int big_count=0;
 int start_r=0,end_r=0;
 int start_c=0,end_c=0;
+int dlina;
     for(i=0;i<row;i++)
-        for(j=0;j<cols-1;j++)
+        for(j=0;j<cols;j++)
         {
+
             gvul = j;
-            for(x=i;x<row;x++)
+            int max_can_be = (row-i)*(cols-j);
+            if(big_count>max_can_be)
             {
-                for(y=gvul;y<cols;y++)
+            // cout << max_can_be << endl;
+               // break;
+                // foud;
+            }
+            cout << "\n\n";
+            dlina=1;
+            for(x=i;x<row-1;x++)
+            {
+                for(y=j;y<cols-1;y++)
                 {
-                    if(matrix[x][y+1]>=matrix[x][y])
+                    if(matrix[x][y] <= matrix[x][y+1])
+                    {
+                        //cout << "dlina bolshe " << x <<  endl;
+                        dlina = ((y - j)+1);
+                    }
+                    else
+                        break;
+
+
+                }
+
+
+                if(matrix[x][cols-1]<=matrix[x+1][0])
+                {
+                    cout << dlina << " glubina bolshe " << x <<  endl;
+                }
+                /*
+                for(y=j;y<cols-1;y++)
+                {
+                    if(matrix[x][y] <= matrix[x][y+1])
                     {
                         big_count = ((y - j)+1)*((x - i)+1);
                         if(big_count>bigger)
@@ -53,16 +83,18 @@ int start_c=0,end_c=0;
                             end_r= (x+1) - i;
                             start_c=j;
                             end_c=y-j;
-                            cout << " bi t " << big_count << " ";
+                            cout << " bi t " << big_count << "\n";
                         }
                     }
                     else
                     {
-                        gvul = cols;
+                        //gvul = y-1;
                         break;
                     }
+
                     //cout << matrix[x][y] << "\t " << start_r << " " << end_r << "\t " << i  << " " << j << " " << x << " " << y  << "\n";
                 }
+  */
             }
         }
         cout    <<  "\n"

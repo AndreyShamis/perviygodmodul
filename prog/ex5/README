@@ -29,8 +29,11 @@ Instruction to use:
 
 		Compile:	g++ -Wall ex5c.cc -o ex5c
 Instruction to use:
-	Entered data: 
-	
-	Returnening data:
+       Input:  Array size rows Max 10 Cols Max 20
+               and array Table row*cols
+       Output:
+       1   -   Line number which is the diamond,
+       2   -   The column number where he is.
+       3   -   Size.
 
 			
