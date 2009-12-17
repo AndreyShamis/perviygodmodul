@@ -25,7 +25,7 @@ Instruction to use:
 			
 		
 		
- * EX5C:: 
+ * EX5C:: Locating Diamonds
 
 		Compile:	g++ -Wall ex5c.cc -o ex5c
 Instruction to use:
