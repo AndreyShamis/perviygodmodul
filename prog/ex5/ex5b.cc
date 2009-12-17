@@ -48,9 +48,11 @@ int dlina;
                // break;
                 // foud;
             }
-            cout << "\n\n";
+            cout << "\n";
             dlina=1;
-            for(x=i;x<row-1;x++)
+
+
+            for(x=i;x<row;x++)
             {
                 for(y=j;y<cols-1;y++)
                 {
@@ -58,18 +60,19 @@ int dlina;
                     {
                         //cout << "dlina bolshe " << x <<  endl;
                         dlina = ((y - j)+1);
+                        cout << matrix[x][y] << " d:" << dlina  << " " ;
                     }
                     else
+                    {
+                        cout << matrix[x][y] << ":" <<  x-i << "*" << cols*(x-i);
+
                         break;
+                    }
 
 
                 }
+                cout << endl;
 
-
-                if(matrix[x][cols-1]<=matrix[x+1][0])
-                {
-                    cout << dlina << " glubina bolshe " << x <<  endl;
-                }
                 /*
                 for(y=j;y<cols-1;y++)
                 {
