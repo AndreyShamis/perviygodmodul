@@ -1,7 +1,20 @@
 /*
- * EX5C    ::
+ * EX5C  :: Locating Diamonds
  * =============================================================
  * Writen by: Andrey Shamis, id: 321470882, login:andreysh
+ *
+ *  Program represents the details of all diamonds found in the array.
+ *  For each diamond has to print the three following data (in this order,
+ *  with space between them, a separate line for each diamond and diamond);
+ *
+ *  To compile : use g++ -Wall ex5c.cc -o ex5c
+ *
+ *      Input:  Array size rows Max 10 Cols Max 20
+ *              and array Table row*cols
+ *      Output:
+ *      1   -   Line number which is the diamond,
+ *      2   -   The column number where he is.
+ *      3   -   Size.
  */
 
 //--------------- including section -------------
@@ -12,149 +25,121 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-
 //--------------- main                 -------------
 int main()
 {
-    const int MAX_ROWS = 10;
-    const int MAX_COLS = 20;
+    const int MAX_ROWS = 10;    // Max array rows
+    const int MAX_COLS = 20;    // Max array cols
 
+    bool diam = false;        //
 
-int glub;
-bool yaalom = false;
-int sidel; // godel cela from center
-int p=0;
-    int matrix[MAX_ROWS][MAX_COLS],
-        //matrix_sum[MAX_ROWS+MAX_COLS][1], // [][0 negative or 1=positive]
+    int matrix[MAX_ROWS][MAX_COLS], // array
+        row, cols,  // parameters matrix, geted from user
+        i,j,x,y,    // counters
+        diameter,   // diameter (size) of diamond
+        sidel,      // length of any side diamond center
+        rift, //threshold,gives the length of negative steps in the staircase
+        up_row, // used to minimize the counting of the upper element in array
+        left_col;//used to minimize the counting of the left element in array
 
-        row, cols,i,j,x,y;
+    cin >> row >> cols; // getting param for matrix
 
-    cin >> row >> cols;
-//cout << row%2 << "\n";
-int max_avail=0;
+    /*
+    int max_avail=0;
     // Looking for max len can be count
     max_avail = (row<cols)? row:cols; // taken from inters
     max_avail = (max_avail%2)? max_avail:max_avail-1; // putting to izugi
     //cout << max_avail << "\n";
+    */
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
-            cin >> matrix[i][j];
-
+            cin >> matrix[i][j];    // putting value into matrix elements
 
     for(i=0;i<row-2;i++)
-    {
         for(j=1;j<cols-1;j++)
-        {
-            //eto uslovie vsegda doljno proiskodit dlya kajdogo rubina
-            if( matrix[i][j] != matrix[i][j+1] &&
-                matrix[i][j] != matrix[i][j-1] &&
-                matrix[i][j] == matrix[i+1][j] &&
-                matrix[i][j] == matrix[i+1][j-1] &&
+            if( matrix[i][j] != matrix[i][j+1] &&   // This condition must
+                matrix[i][j] != matrix[i][j-1] &&   // always occur for each
+                matrix[i][j] == matrix[i+1][j] &&   // diamond, not dependent
+                matrix[i][j] == matrix[i+1][j-1] && // on its length
                 matrix[i][j] == matrix[i+1][j+1] &&
                 matrix[i][j] == matrix[i+2][j])
             {
-                //nayti glubinu
-                glub=3;
-                // nahodim glubinu
+
+                diameter=3; // length of which we have already found
+                // find the length of the workpiece diamond from 3 (we have)
                 for(x=i+2;x<row-1;x+=2)
-                    if(matrix[i][j] == matrix[x][j] &&  matrix[i][j] == matrix[x+1][j])
-                        glub+=2;
+                    if(matrix[i][j] == matrix[x][j]
+                    && matrix[i][j] == matrix[x+1][j])
+                        diameter+=2;    // add 2 to the length
                     else
-                        break;
-                // znaem tochnuyu glubinu
-               // cout << i << " " << j << " " << glub  << ":\t  " << 1+ j-((glub+1)/2) << "." << endl ;
+                        break;          // ended length, we suppress the cycle
 
-                // eta shtuchka esit vse levie rubini (pochti)
-                if(1+ j-((glub+1)/2) >=0) // proveryaem pravilnost shiroti
+                sidel = ((diameter+1)/2); // length of any side diamond center
+                // validation of latitude, so as not to go beyond the field
+                if(1+j-sidel>=0)
                 {
-                   //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
-                    yaalom=true;
-                    // looking in diamond like sulam with madregot
-                    //13 13 13 x
-                    //13 13 x
-                    //13 x
-                    //x
-                    sidel = ((glub+1)/2);
-                    p=0;
-                    for(x=i+sidel-1;x<i+sidel-1+sidel;x++)
-                    {
+                    diam=true;
+                    // Forget the fact that we are looking      //13 13 13 #
+                    // for a diamond! To begin with "bends"     //13 13 !
+                    // our diamond in two, and get the step     //13 !
+                    // ladder, and check it by the same laws    //$
+                    // with the "step" in the two sides.
+                    // 13 - our diamond :
+                    // # - vertical, horizontal edge of total 4
+                    // ! - edge of the stairs (only 4 in diamond)
+
+                    rift=0; // negative step
+
+                    for(x=i+sidel-1;x<2*sidel+i-1 && diam;x++)
+                    {   // looking from up to down
                         if(x==i+sidel-1)
-                        {
-                            if(x-sidel>=0)
+                        {   // check the top and bottom (outside) {"$"}
+                            if(x-sidel>=0)  // up side
                                 if(matrix[i][j]==matrix[x-sidel][j])
-                                    yaalom = false;//cout << "Konec laja up" << endl;
+                                    diam = false;
 
-
-                            if(x+sidel<row)
+                            if(x+sidel<row) // down side
                                 if(matrix[i][j]==matrix[x+sidel][j])
-                                    yaalom = false;//cout << "Konec laja down " << matrix[x+sidel][j] << endl;
+                                    diam = false;
                         }
-                          //cout << " x:" << x << " ";
-                        for(y=j;y<j+sidel-p ;y++)
-                        {
-                            if(y==j)// proverka kace
-                            {
-                                if(j-sidel>=0)
+
+                        for(y=j;y<j+sidel-rift && diam;y++)
+                        {   // looking from left to right
+                            up_row  = x-2*rift;     // upper element in array
+                            left_col= 2*j-y;        // left element in array
+
+                            if(y==j)
+                            {   // check the outside {"#"}
+                                if(j-sidel>=0)      // left side
                                     if(matrix[i][j]==matrix[x][j-sidel])
-                                        yaalom = false;//cout << "Konec laja left" << endl;
+                                        diam = false;
 
-                                if(j+sidel<cols)
+                                if(j+sidel<cols)    // right side
                                     if(matrix[i][j]==matrix[x][j+sidel])
-                                        yaalom = false;//cout << "Konec laja right" << endl;
+                                        diam = false;
                             }
-                            else if(y==j+sidel-p-1) //proverka na stupenkax X
-                                if(matrix[i][j]==matrix[x][y+1] || matrix[i][j]==matrix[x][2*j-y-1])
-                                    yaalom = false;
+                            else if(y==j+sidel-rift-1)//check the edges {"!"}
+                                if(matrix[i][j]==matrix[x][y+1]
+                                || matrix[i][j]==matrix[x][left_col-1]
+                                || matrix[i][j]==matrix[up_row][y+1]
+                                || matrix[i][j]==matrix[up_row][left_col-1])
+                                    diam = false;
 
-                            // proverka kubikov
-                            if(matrix[i][j]!=matrix[x][y] || matrix[i][j]!=matrix[x][2*j-y])
-                                yaalom = false; //cout << "\n UPS:" << matrix[x][y] << "\n";
+                            // check inside {"13"}
+                            if(matrix[i][j]!=matrix[x][y]
+                            || matrix[i][j]!=matrix[x][left_col]
+                            || matrix[i][j]!=matrix[up_row][y]
+                            || matrix[i][j]!=matrix[up_row][left_col])
+                                diam = false;
                         }
-                        p++; // minustor stupenek
+                        rift++; // add the negative step
                     }
 
-                    if(yaalom == 1)
-                    {
-                        //cout  << "\t";
-                        cout << i << " " << j << " " << glub  <<  "\n";
-
-                    }
-
-
+                    if(diam)  // if found something output him parameters
+                        cout << i << " " << j << " " << diameter  <<  "\n";
                 }
-                //cout << i << " " << j << " " << glub  <<  "\n"; //" /" << matrix[i][j] << "/. " ;
-                // proverit pravelnost rubina
-                // dlina doljna podhodit
-                // esli ne podhoodit znachit eto ne rubin
-
-                // 2 stolbca uje proverili
-                // proveryaem pravilnost shirini if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
-
-                // proveryaem pravilnie i nepravilnie kubiki
-
-
-/*
-                glub=1;
-                for(x=i+1;x<row,yaalom;x++)
-                {  if(j-((glub+1)/2)>=0 && j+((glub+1)/2)<=cols)
-                        glub++;
-                    else
-                        break;
-                   for(y=j-((glub+1)/2);y<j+((glub+1)/2);y++)
-                        if(matrix[i][j] != matrix[y][x]){
-                            glub--;
-                            yaalom=false;
-                            cout << "tut " << matrix[i][j] << " " << matrix[y][x] << "\n";
-                            break;
-                        }
-                } */
-                //po trokam proverit pravilnost kajdogog stolbca v dannom ryady
-
-
             }
-        }
-    }
-//cout << endl;
+
     return(0);
 }
 
