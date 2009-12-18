@@ -25,44 +25,44 @@ int main()
         matrix_cols[MAX_COLS][3],
         row, cols,
         i,j,
-        bigger=0,
-        output_col=0,
-        output_row=0;
+        bigger = 0,
+        output_col = 0,
+        output_row = 0;
 
     cin >> row >> cols;
 
     for(i=0;i<row;i++)
     {
-        matrix_rows[i][0]=0;
-        matrix_rows[i][1]=0;
+        matrix_rows[i][0] = 0;
+        matrix_rows[i][1] = 0;
     }
     for(i=0;i<cols;i++)
     {
-        matrix_cols[i][0]=0;
-        matrix_cols[i][1]=0;
+        matrix_cols[i][0] = 0;
+        matrix_cols[i][1] = 0;
     }
 
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
-            cin >> matrix[i][j];
+            cin >>  matrix[i][j];
 
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
             if (matrix[i][j]>= 0)
             {
-                matrix_rows[i][1]+=matrix[i][j];
-                matrix_cols[j][1]+=matrix[i][j];
+                matrix_rows[i][1]+= matrix[i][j];
+                matrix_cols[j][1]+= matrix[i][j];
 
             }
             else
             {
-                matrix_rows[i][0]+=matrix[i][j];
-                matrix_cols[j][0]+=matrix[i][j];
+                matrix_rows[i][0]+= matrix[i][j];
+                matrix_cols[j][0]+= matrix[i][j];
             }
     for(i=0;i<row;i++)
-        matrix_rows[i][2] = abs(matrix_rows[i][1]+matrix_rows[i][0]);
+        matrix_rows[i][2] = abs(matrix_rows[i][1] + matrix_rows[i][0]);
     for(i=0;i<cols;i++)
-        matrix_cols[i][2] = abs(matrix_cols[i][1]+matrix_cols[i][0]);
+        matrix_cols[i][2] = abs(matrix_cols[i][1] + matrix_cols[i][0]);
 
     for(i=0;i<row;i++)
         if(matrix_rows[i][2]>bigger)
@@ -81,7 +81,7 @@ int main()
     if(output_row>=output_col)
         cout << "row "  << output_row << endl;
     else
-        cout << "col " << output_col << endl;
+        cout << "col "  << output_col << endl;
 
     return(0);
 }
