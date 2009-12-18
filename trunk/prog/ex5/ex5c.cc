@@ -23,7 +23,6 @@
 //--------------- using section        -------------
 using std::cout;
 using std::cin;
-using std::endl;
 
 //--------------- main                 -------------
 int main()
@@ -42,7 +41,7 @@ int main()
         up_row, // used to minimize the counting of the upper element in array
         left_col;//used to minimize the counting of the left element in array
 
-    cin >> row >> cols; // getting param for matrix
+    cin >> row  >> cols; // getting param for matrix
 
     /*
     int max_avail=0;
@@ -65,22 +64,23 @@ int main()
                 matrix[i][j] == matrix[i+2][j])
             {
 
-                diameter=3; // length of which we have already found
+                diameter =   3; // length of which we have already found
                 // find the length of the workpiece diamond from 3 (we have)
                 for(x=i+2;x<row-1;x+=2)
                     if(matrix[i][j] == matrix[x][j]
                     && matrix[i][j] == matrix[x+1][j])
-                        diameter+=2;    // add 2 to the length
+                        diameter+=  2;  // add 2 to the length
                     else
                         break;          // ended length, we suppress the cycle
 
-                sidel = ((diameter+1)/2); // length of any side diamond center
+                sidel =  (diameter+1)/2;// length of any side diamond center
+
                 // validation of latitude, so as not to go beyond the field
                 if(1+j-sidel>=0)
                 {
-                    diam=true;
+                    diam =   true;
                     // Forget the fact that we are looking      //13 13 13 #
-                    // for a diamond! To begin with "bends"     //13 13 !
+                    // for a diamond! To begin with "fold"      //13 13 !
                     // our diamond in two, and get the step     //13 !
                     // ladder, and check it by the same laws    //$
                     // with the "step" in the two sides.
@@ -88,7 +88,7 @@ int main()
                     // # - vertical, horizontal edge of total 4
                     // ! - edge of the stairs (only 4 in diamond)
 
-                    rift=0; // negative step
+                    rift =  0; // negative step
 
                     for(x=i+sidel-1;x<2*sidel+i-1 && diam;x++)
                     {   // looking from up to down
@@ -96,41 +96,41 @@ int main()
                         {   // check the top and bottom (outside) {"$"}
                             if(x-sidel>=0)  // up side
                                 if(matrix[i][j]==matrix[x-sidel][j])
-                                    diam = false;
+                                    diam =  false;
 
                             if(x+sidel<row) // down side
                                 if(matrix[i][j]==matrix[x+sidel][j])
-                                    diam = false;
+                                    diam =  false;
                         }
 
                         for(y=j;y<j+sidel-rift && diam;y++)
                         {   // looking from left to right
-                            up_row  = x-2*rift;     // upper element in array
-                            left_col= 2*j-y;        // left element in array
+                            up_row   =  x-(2*rift); // upper element in array
+                            left_col =  (2*j)-y;    // left element in array
 
                             if(y==j)
                             {   // check the outside {"#"}
                                 if(j-sidel>=0)      // left side
                                     if(matrix[i][j]==matrix[x][j-sidel])
-                                        diam = false;
+                                        diam =  false;
 
                                 if(j+sidel<cols)    // right side
                                     if(matrix[i][j]==matrix[x][j+sidel])
-                                        diam = false;
+                                        diam =  false;
                             }
                             else if(y==j+sidel-rift-1)//check the edges {"!"}
                                 if(matrix[i][j]==matrix[x][y+1]
                                 || matrix[i][j]==matrix[x][left_col-1]
                                 || matrix[i][j]==matrix[up_row][y+1]
                                 || matrix[i][j]==matrix[up_row][left_col-1])
-                                    diam = false;
+                                    diam =  false;
 
                             // check inside {"13"}
                             if(matrix[i][j]!=matrix[x][y]
                             || matrix[i][j]!=matrix[x][left_col]
                             || matrix[i][j]!=matrix[up_row][y]
                             || matrix[i][j]!=matrix[up_row][left_col])
-                                diam = false;
+                                diam =  false;
                         }
                         rift++; // add the negative step
                     }
@@ -142,4 +142,3 @@ int main()
 
     return(0);
 }
-
