@@ -44,33 +44,50 @@ bigger=0;
             dlina=1;
 
 int buy=cols;
-int glub = 0;
+int glub = 1;
             for(x=i;x<row;x++)
-            { for(y=j;y<buy-1;y++)
+            {
+                for(y=j;y<buy-1;y++)
                 {
                     if(matrix[x][y] <= matrix[x][y+1])
                     {   dlina = ((y - j)+1);
                         //cout << matrix[x][y] << " " ;
                     }
                     else
-                    {       buy = y-j;
+                    {       buy = y-j+1;
                             break;
                     }
                 }
-                if((glub+1)*(y-j+1)>bigger){
-                    bigger=(glub+1)*(y-j+1);
-                    //cout << matrix[i][j] << " " <<  matrix[x][y] << " :" <<  glub+1 << "*" << y-j+1  << "== " <<bigger << endl;
+
+                if(glub*(y-j+1)>bigger)
+                {
+bigger=glub*(y-j+1);
+                 //   cout << matrix[i][j] << " " <<  matrix[x][y] << " :" <<  glub << "*" << y-j+1 << "|" << buy << "== " <<bigger << "\n";
                     start_r =   i;
                     end_r   =   j;
-                    start_c =   glub+1;
+                    start_c =   glub;
                     end_c   =   y-j+1;
                 //cout <<(glub+1)*(y-j+1) << endl ;
                 }
-                if(matrix[x][y] > matrix[x+1][j])
-                    break;
 
-                glub++;
+
+                if(x+1 < row)
+                {
+                    if(matrix[x][y] > matrix[x+1][j])
+                    {
+
+                        //cout << x-i << " " << y-j << "\n";
+                       // cout << matrix[i][j] << " " << matrix[x+1][j]
+                     //   << "||" << j << " " <<  x+1 << " :" <<  glub+1 << "*" << y-j+1  << "== " <<bigger << " buy: " << buy << "\n" ;
+
+                        break;
+                    }
+
+//cout << x-i << " " << y-j << "\n";
+                }
+                 glub++;
             }
+           // cout << matrix[i][j] << " " <<  matrix[x][y] << " :" << (glub+1) << " " << (y-j+1) << "\n";
         }
 
 cout <<                  start_r    << " " <<
