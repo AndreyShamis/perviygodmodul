@@ -34,7 +34,7 @@ int main()
 
     int matrix[MAX_ROWS][MAX_COLS], // array
         row, cols,  // parameters matrix, geted from user
-        i,j,x,y,    // counters
+        i,j,x,y,    // counters :index for loops
         diameter,   // diameter (size) of diamond
         sidel,      // length of any side diamond center
         rift, //threshold,gives the length of negative steps in the staircase
@@ -79,19 +79,17 @@ int main()
                 if(1+j-sidel>=0)
                 {
                     diam =   true;
-                    // Forget the fact that we are looking      //13 13 13 #
-                    // for a diamond! To begin with "fold"      //13 13 !
-                    // our diamond in two, and get the step     //13 !
-                    // ladder, and check it by the same laws    //$
-                    // with the "step" in the two sides.
-                    // 13 - our diamond :
-                    // # - vertical, horizontal edge of total 4
-                    // ! - edge of the stairs (only 4 in diamond)
+                    // Forget we are looking for a diamond.     //13 13 13 #
+                    // To begin with fold our diamond in two    //13 13 !
+                    // and get the step ladder ,check it by     //13 !
+                    // the same laws                            //$
+                    // 13-our diamond. $-vertical.#-horizontal
+                    // !-edge of the stairs (4 in diamond)
 
                     rift =  0; // negative step
-
+                    // looking from i(up) to i++(down)
                     for(x=i+sidel-1;x<2*sidel+i-1 && diam;x++)
-                    {   // looking from up to down
+                    {
                         if(x==i+sidel-1)
                         {   // check the top and bottom (outside) {"$"}
                             if(x-sidel>=0)  // up side
