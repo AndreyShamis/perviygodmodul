@@ -26,62 +26,69 @@ int main()
         for(j=0;j<cols;j++)
             cin >> matrix[i][j];
 
-int bigger=0;
+
 
 int start_r=0,end_r=0;
 int start_c=0,end_c=0;
-int dlina;
-bigger=0;
+
+int height,width,len_width,bigger=0;
+
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
         {
-            int max_can_be = (row-i)*(cols-j);
-            if(bigger>max_can_be)
-            {
+            //int max_can_be = (row-i)*(cols-j);
+            //if(bigger>max_can_be)
+            //{
 
-               break;
-            }
-            dlina=1;
+            //   break;
+            //}
 
-int buy=cols;
-int glub = 1;
+            height  = 0;
+
+            len_width = cols-1-j;
+           //     cout << cols-1-j << "\n" ;
+          // cout << "+++\n";
             for(x=i;x<row;x++)
             {
-
-                for(y=j;y<buy-1;y++)
+                height++;
+                width   = 1;
+                for(y=j;y<len_width+j;y++)
                 {
-                    if(matrix[x][y] <= matrix[x][y+1])
+                    if(matrix[x][y] > matrix[x][y+1])
                     {
-                        continue;
-                    }
-                    else
-                    {       buy = y-j+1;
-                            break;
-                    }
-                }
-
-                if(glub*(y-j+1)>bigger)
-                {
-                    bigger=glub*(y-j+1);
-                 //   cout << matrix[i][j] << " " <<  matrix[x][y] << " :" <<  glub << "*" << y-j+1 << "|" << buy << "== " <<bigger << "\n";
-                    start_r =   i;
-                    end_r   =   j;
-                    start_c =   glub;
-                    end_c   =   y-j+1;
-                }
-
-
-                if(x+1 < row)
-                {
-                    if(matrix[x][y] > matrix[x+1][j])
-                    {
-                        //cout << x-i << " " << y-j << "\n";
-                       // cout << matrix[i][j] << " " << matrix[x+1][j]
-                     //   << "||" << j << " " <<  x+1 << " :" <<  glub+1 << "*" << y-j+1  << "== " <<bigger << " buy: " << buy << "\n" ;
+                        len_width = y-j;
+                        //cout << x << ":" << len_width << " ";
+                       // cout << "b";
                         break;
                     }
+                    else
+                    {
+                        width++;
+                //      cout << height << "*" << width << "==" << height*width << " " ;
+                    }
+                   // cout << height << ":" << width << " "  << ". ";
                 }
-                 glub++;
+                if((height*width) > bigger)
+                {
+                    bigger = height*width;
+                    start_r =   i;
+                    end_r   =   j;
+                    start_c =   height;
+                    end_c   =   width;
+                }
+                if(x+1 != row)
+                {
+                   if(matrix[x][y] > matrix[x+1][j]){
+                        //break;
+                        if(len_width>0)
+                            len_width--;
+                        else
+                            break;
+
+                   }
+                   //cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
+                }
+                //cout << "\n";
             }
         }
 
