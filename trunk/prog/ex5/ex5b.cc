@@ -47,7 +47,7 @@ int height,width,len_width,bigger=0;
 
             len_width = cols-1-j;
            //     cout << cols-1-j << "\n" ;
-          // cout << "+++\n";
+           cout << "+++\n";
             for(x=i;x<row;x++)
             {
                 height++;
@@ -58,7 +58,6 @@ int height,width,len_width,bigger=0;
                     {
                         len_width = y-j;
                         //cout << x << ":" << len_width << " ";
-                       // cout << "b";
                         break;
                     }
                     else
@@ -86,7 +85,7 @@ int height,width,len_width,bigger=0;
                             break;
 
                    }
-                   //cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
+                   cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
                 }
                 //cout << "\n";
             }
