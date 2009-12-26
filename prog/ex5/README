@@ -52,7 +52,7 @@ Runtime: n^4
 			2. other members of his group,
 			3. all other users.
 
-			3 characters:
-			r - the right to read
-			w - Record
-			x - the implementation file.
+			3 letters:
+			r - read
+			w - write 
+			x - run file.
