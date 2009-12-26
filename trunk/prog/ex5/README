@@ -1,28 +1,32 @@
-modprog 2010
+﻿modprog 2010
 Writen by: Andrey Shamis
 id: 321470882
 login:andreysh
 Class: Hadassah/2010
 
- * EX5A:: 
- 
+ * EX5A:: Row / Column gap between the amount of positive and negative values where a maximum
+ If the maximum gap in the row number i, then row i (for example: row 3), 
+ if the maximum gap in column number col i then i (eg col 3).
  
 		Compile:	g++ -Wall ex5a.cc -o ex5a
 Instruction to use:
-	Entered data:	Like: 
+	Input data: Matrix(Array)
 
-	Returnening data:	sorted
+	Returnening data:	gap between the amount of positive and negative values
 
 
 	
- * EX5B::
-
+ * EX5B :: Maximum Sub Array monotonous immigrants whose values
+Detect sub - set a very large rectangular platform (maximum area) 
+located at - matrix maintains underground organs - the array are in ascending order; 
+Set Ascending: each cell is less than or equal to the next cell row, 
+last cell in a row less than or equal first cell in the next row.
 		Compile:	g++ -Wall ex5b.cc -o ex5b
 Instruction to use:
-	Entered data: 
-
-	Returnening data:
+	Input data: Matrix
+	Returnening data: A biger place [0,0,h,w]
 			
+Runtime: n^4
 		
 		
  * EX5C:: Locating Diamonds
@@ -36,4 +40,19 @@ Instruction to use:
        2   -   The column number where he is.
        3   -   Size.
 
-			
+Runtime: n^4
+
+
+ * EX5D:: Linux operating system [[ANSWER]]
+
+	1: file type(directory, file)
+	2:
+		9 characters are divided into 3 groups: 3 letters: (permissions)
+			1. owner
+			2. other members of his group,
+			3. all other users.
+
+			3 characters:
+			r - the right to read
+			w - Record
+			x - the implementation file.
