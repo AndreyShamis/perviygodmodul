@@ -19,8 +19,8 @@ using std::endl;
 //--------------- main                 -------------
 int main()
 {
-    const int MAX_ROWS = 10;
-    const int MAX_COLS = 20;
+    const int MAX_ROWS = 10;// Max array rows
+    const int MAX_COLS = 20;// Max array cols
 
     int matrix[MAX_ROWS][MAX_COLS], // array main Matrix
         matrix_rows[MAX_ROWS][3],   // array rows
