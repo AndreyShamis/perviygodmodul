@@ -33,23 +33,21 @@ int main()
     bool diam = false;        //
 
     int matrix[MAX_ROWS][MAX_COLS], // array
-        row, cols,  // parameters matrix, geted from user
-        i,j,x,y,    // counters :index for loops
-        diameter,   // diameter (size) of diamond
-        sidel,      // length of any side diamond center
+        row, cols,      // parameters matrix, geted from user
+        i,j,x,y,        // counters :index for loops
+        diameter,       // diameter (size) of diamond
+        sidel,          // length of any side diamond center
         rift, //threshold,gives the length of negative steps in the staircase
         up_row, // used to minimize the counting of the upper element in array
-        left_col;//used to minimize the counting of the left element in array
+        left_col,//used to minimize the counting of the left element in array
+        max_avail=0;    //max len can be count
 
     cin >> row  >> cols; // getting param for matrix
 
-    /*
-    int max_avail=0;
     // Looking for max len can be count
     max_avail = (row<cols)? row:cols; // taken from inters
     max_avail = (max_avail%2)? max_avail:max_avail-1; // putting to izugi
-    //cout << max_avail << "\n";
-    */
+
     for(i=0;i<row;i++)
         for(j=0;j<cols;j++)
             cin >> matrix[i][j];    // putting value into matrix elements
@@ -63,7 +61,6 @@ int main()
                 matrix[i][j] == matrix[i+1][j+1] &&
                 matrix[i][j] == matrix[i+2][j])
             {
-
                 diameter =   3; // length of which we have already found
                 // find the length of the workpiece diamond from 3 (we have)
                 for(x=i+2;x<row-1;x+=2)
