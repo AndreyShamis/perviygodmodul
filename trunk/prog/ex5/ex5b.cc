@@ -88,17 +88,15 @@ int main()
                     end_c   =   width;
                 }
                 if(x+1 != row)
-                {
-                   if(matrix[x][y] > matrix[x+1][j]){
-                        //break;
-                        if(len_width>0)
+                   if(matrix[x][y] > matrix[x+1][j])
+                   {
+                        if(len_width  >  0)
                             len_width--;
-                        if(len_width==0)
+                        if(len_width ==  0)
                             break;
-
                    }
-                   //cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
-                }
+
+                //cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
                 //cout << "\n";
             }
         }
