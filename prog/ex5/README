@@ -26,7 +26,7 @@ Instruction to use:
 	Input data: Matrix
 	Returnening data: A biger place [0,0,h,w]
 			
-Runtime: n^4
+Runtime: (cols*rows)^2 == array_len^4
 		
 		
  * EX5C:: Locating Diamonds
@@ -40,8 +40,9 @@ Instruction to use:
        2   -   The column number where he is.
        3   -   Size.
 
-Runtime: n^4
-
+Runtime: (row-2)(cols-2)(rows + !((diamand_len+1)/2)) ==
+		array_len^2*half_diam!
+		!- factorial
 
  * EX5D:: Linux operating system [[ANSWER]]
 
