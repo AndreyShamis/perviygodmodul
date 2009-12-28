@@ -67,10 +67,10 @@ int main()
                         width++;            // width + 1
 
                 }
-<<<<<<< .mine
+
                 if(next_cols_width) //if found that some balue biger than value
                     len_width=next_cols_width;// off new line, set new value/
-=======
+					
                 if(x+1 != row)
                    if(matrix[x][y] > matrix[x+1][j])
                    {
@@ -78,8 +78,7 @@ int main()
                             len_width--;
                         if(len_width ==  0)
                             break;
->>>>>>> .r156
-<<<<<<< .mine
+
                 if((height*width) > bigger)
                 {   // If this space bigger than previous founded
                     bigger = height*width;  // Sets new values
@@ -88,11 +87,8 @@ int main()
                     start_c =   height;     // len height
                     end_c   =   width;      // len width
                 }
-=======
                    }
 
-                //cout  << x << "-" << y<< "--" << x+1 << "-" << j<< "--" << matrix[x][y] << " == " << matrix[x+1][j] << "\n";
->>>>>>> .r156
                 if(x+1 != row)  // Check if we not out of range
                    if(matrix[x][y] > matrix[x+1][j]) // check last value with
                         if(len_width  >  2)          // new value

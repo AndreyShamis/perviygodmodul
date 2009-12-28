@@ -1,0 +1,27 @@
+﻿modprog 2010
+Writen by: Andrey Shamis
+id: 321470882
+login:andreysh
+Class: Hadassah/2010
+
+ * EX6A:: 
+ 
+		Compile:	g++ -Wall ex6a.cc -o ex6a
+Instruction to use:
+	Input data: 
+
+	Returnening data:	
+	
+ * EX6B :: 
+
+		Compile:	g++ -Wall ex6b.cc -o ex6b
+Instruction to use:
+	Input data:
+	Returnening data: 
+		
+ * EX6C::
+
+		Compile:	g++ -Wall ex6c.cc -o ex6c
+Instruction to use:
+       Input:  
+       Output:
